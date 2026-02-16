@@ -113,7 +113,6 @@ const RightSidebar: FC = () => {
                     type="range"
                     min="12"
                     max="40"
-                    defaultValue={20}
                     value={translationFontSize}
                     onChange={(e) =>
                       setTranslationFontSize(Number(e.target.value))
