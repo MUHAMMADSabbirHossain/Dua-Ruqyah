@@ -57,21 +57,39 @@ const CategorySlugPage: FC<{ params: { categorySlug: string } }> = async ({
                       </div>
                     </div>
                   </div>
-                  <ul className="absolute mt-[12px] left-0 top-0 bottom-0 w-px border-l-2 border-dashed border-[#C5D1C7]">
-                    {category?.sub_category?.length > 0 ? (
-                      category?.sub_category?.map((subCategory: any) => (
-                        <li
-                          key={subCategory.id}
-                          className="relative pl-6 py-2 hover:bg-gray-50/50 rounded cursor-pointer transition-all group"
-                        >
-                          <div className="absolute left-0 top-1/2 w-4 h-px border-t-2 border-dashed border-[#E1EBE1]"></div>
-                          {/* {subCategory?.subcat_name_en} */}
-                        </li>
-                      ))
-                    ) : (
-                      <p>No sub-categories found.</p>
-                    )}
-                  </ul>
+
+                  {/* Subcategories List */}
+                  <div className="ml-[26px] relative">
+                    <div className="absolute mt-[12px] left-0 top-0 bottom-0 w-px border-l-2 border-dashed border-[#C5D1C7]"></div>
+
+                    <ul>
+                      {category?.sub_category?.length > 0 ? (
+                        category?.sub_category?.map((subCategory: any) => (
+                          <li
+                            key={subCategory.id}
+                            className="relative pl-6 py-2 hover:bg-gray-50/50 rounded cursor-pointer transition-all group"
+                          >
+                            <div className="absolute left-0 top-1/2 w-4 h-px border-t-2 border-dashed border-[#E1EBE1]"></div>
+                            {subCategory?.subcat_name_en ? (
+                              <div className="flex items-center gap-2">
+                                <h4
+                                  className={`text-[14px] font-medium leading-relaxed transition-colors text-[#282E29]`}
+                                >
+                                  {subCategory?.subcat_name_en}
+                                </h4>
+                              </div>
+                            ) : (
+                              <h4 className="text-[#282E29] text-[14px] font-medium leading-relaxed">
+                                {subCategory?.subcat_name_en}
+                              </h4>
+                            )}
+                          </li>
+                        ))
+                      ) : (
+                        <p>No sub-categories found.</p>
+                      )}
+                    </ul>
+                  </div>
                 </li>
               ))
             ) : (
