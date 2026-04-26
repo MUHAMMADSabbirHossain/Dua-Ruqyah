@@ -26,6 +26,11 @@ const CategorySlugPage: FC<{ params: { categorySlug: string } }> = async ({
   const categories = (await getCategories()) || [];
   // console.log("categories: ", categories);
 
+  const duas = categories.find(
+    (category: any) => category.cat_id === categorySlug,
+  );
+  console.log("duas: ", duas);
+
   return (
     <div className="flex h-[calc(100vh-64px-64px)] lg:h-[calc(100vh-64px)] overflow-hidden">
       <div className="flex-shrink-0 hidden lg:block">
@@ -133,7 +138,7 @@ const CategorySlugPage: FC<{ params: { categorySlug: string } }> = async ({
       </div>
 
       {/* Duas List */}
-      {/* <section>
+      <section>
         <ul className="space-y-10">
           <li>1</li>
           <li>2</li>
@@ -141,7 +146,7 @@ const CategorySlugPage: FC<{ params: { categorySlug: string } }> = async ({
           <li>4</li>
           <li>5</li>
         </ul>
-      </section> */}
+      </section>
     </div>
   );
 };

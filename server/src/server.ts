@@ -139,4 +139,43 @@ ORDER BY category.id ASC;`,
   });
 });
 
+app.get("/api/duas-by-category", async (req, res) => {
+  console.log("req.query.cat_slug: ", req.query.cat_slug);
+
+  const cat_id = await new Promise((resolve, reject) => {
+    db.all(
+      "SELECT cat_id FROM category WHERE cat_slug = ?",
+      [req.query.cat_slug],
+      (error, rows) => {
+        if (error) {
+          reject(error);
+          res.status(500).send(error);
+        } else {
+          resolve(rows);
+          res.status(200).send(rows);
+        }
+      },
+    );
+  });
+  console.log("cat_id: ", cat_id);
+
+  // await new Promise((resolve, reject) => {
+  //   db.all(
+  //     // "SELECT * FROM dua WHERE cat_slug = ?",
+  //     // [req.query.cat_slug],
+  //     "SELECT * FROM dua WHERE cat_id = ?",
+  //     [1],
+  //     (error, rows) => {
+  //       if (error) {
+  //         reject(error);
+  //         res.status(500).send(error);
+  //       } else {
+  //         resolve(rows);
+  //         res.status(200).send(rows);
+  //       }
+  //     },
+  //   );
+  // });
+});
+
 export default app;
