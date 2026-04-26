@@ -2,7 +2,7 @@ function CategoryPage() {
   return (
     <>
       {/* Responsive Sidebar - Desktop: left sidebar, Mobile: bottom bar */}
-      {/* Dektop: left sidebar */}
+
       {/* Dua Icon - Desktop only */}
       <div className="mt-3 mb-8 hidden lg:block">
         <div className="w-[44px] h-[44px] bg-[#417360] rounded-xl flex items-center justify-center">
@@ -27,6 +27,226 @@ function CategoryPage() {
             />
           </svg>
         </div>
+      </div>
+
+      {/* Navigation Items - Responsive layout for Desktop only */}
+      <div>
+        {/* Home Icon - Desktop only */}
+        <button className="w-10 h-10 lg:rounded-xl flex items-center justify-center">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              opacity="0.4"
+              d="M20.95 14.55L18.28 17.22L17.22 18.28L14.55 20.95C13.15 22.35 10.85 22.35 9.45002 20.95L6.78001 18.28L5.72001 17.22L3.05 14.55C1.65 13.15 1.65 10.85 3.05 9.45002L5.72001 6.78001L6.78001 5.72001L9.45002 3.05C10.85 1.65 13.15 1.65 14.55 3.05L17.22 5.72001L18.28 6.78001L20.95 9.45002C22.35 10.85 22.35 13.15 20.95 14.55Z"
+              fill="#417360"
+            />
+            <path
+              d="M13.06 12L18.28 17.22L17.22 18.28L12 13.06L6.78 18.28L5.72 17.22L10.94 12L5.72 6.78L6.78 5.72L12 10.94L17.22 5.72L18.28 6.78L13.06 12Z"
+              fill="#417360"
+            />
+          </svg>
+        </button>
+
+        {/* Bookmark Icon - Desktop only */}
+        <button className="w-10 h-10 lg:rounded-xl flex items-center justify-center">
+          <svg
+            width="18"
+            height="20"
+            viewBox="0 0 18 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M11.5 8.65H6.5"
+              stroke="#709484"
+              strokeWidth="1.5"
+              strokeMiterlimit="10"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M13.82 0H4.18C2.05 0 0.32 1.74 0.32 3.86V17.95C0.32 19.75 1.61 20.51 3.19 19.64L8.07 16.93C8.59 16.64 9.43 16.64 9.94 16.93L14.82 19.64C16.4 20.52 17.69 19.76 17.69 17.95V3.86C17.68 1.74 15.95 0 13.82 0Z"
+              stroke="#709484"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </button>
+
+        {/* Play Icon - Desktop only */}
+        <button className="w-10 h-10 lg:rounded-xl flex items-center justify-center">
+          <svg
+            width="18"
+            height="22"
+            viewBox="0 0 18 22"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M9 5.89L7.93 7.75C7.69 8.16 7.89 8.5 8.36 8.5H9.63C10.11 8.5 10.3 8.84 10.06 9.25L9 11.11"
+              stroke="#709484"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M5.3 16.04V14.88C3 13.49 1.11 10.78 1.11 7.9C1.11 2.95 5.66 -0.93 10.8 0.19C13.06 0.69 15.04 2.19 16.07 4.26C18.16 8.46 15.96 12.92 12.73 14.87V16.03C12.73 16.32 12.84 16.99 11.77 16.99H6.26C5.16 17 5.3 16.57 5.3 16.04Z"
+              stroke="#709484"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M5.5 20C7.79 19.35 10.21 19.35 12.5 20"
+              stroke="#709484"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </button>
+
+        {/* Grid/Categories Icon - Desktop only */}
+        <button className="w-10 h-10 lg:rounded-xl flex items-center justify-center">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M15 8H17C19 8 20 7 20 5V3C20 1 19 0 17 0H15C13 0 12 1 12 3V5C12 7 13 8 15 8Z"
+              stroke="#709484"
+              strokeWidth="1.5"
+              strokeMiterlimit="10"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M3 20H5C7 20 8 19 8 17V15C8 13 7 12 5 12H3C1 12 0 13 0 15V17C0 19 1 20 3 20Z"
+              stroke="#709484"
+              strokeWidth="1.5"
+              strokeMiterlimit="10"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M4 8C6.20914 8 8 6.20914 8 4C8 1.79086 6.20914 0 4 0C1.79086 0 0 1.79086 0 4C0 6.20914 1.79086 8 4 8Z"
+              stroke="#709484"
+              strokeWidth="1.5"
+              strokeMiterlimit="10"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M16 20C18.2091 20 20 18.2091 20 16C20 13.7909 18.2091 12 16 12C13.7909 12 12 13.7909 12 16C12 18.2091 13.7909 20 16 20Z"
+              stroke="#709484"
+              strokeWidth="1.5"
+              strokeMiterlimit="10"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </button>
+
+        {/* More/Menu Icon - Desktop only */}
+        <button className="w-10 h-10 lg:rounded-xl flex items-center justify-center">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0 20H20"
+              stroke="#709484"
+              strokeWidth="1.5"
+              strokeMiterlimit="10"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M15 0H5C2 0 1 1.79 1 4V20H19V4C19 1.79 18 0 15 0Z"
+              stroke="#709484"
+              strokeWidth="1.5"
+              strokeMiterlimit="10"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M12.06 13H7.93C7.42 13 6.99 13.42 6.99 13.94V20H12.99V13.94C13 13.42 12.58 13 12.06 13Z"
+              stroke="#709484"
+              strokeWidth="1.5"
+              strokeMiterlimit="10"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M10 4V9"
+              stroke="#709484"
+              strokeWidth="1.5"
+              strokeMiterlimit="10"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M7.5 6.5H12.5"
+              stroke="#709484"
+              strokeWidth="1.5"
+              strokeMiterlimit="10"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </button>
+
+        {/* Book Icon - Desktop only */}
+        <button className="w-10 h-10 lg:rounded-xl flex items-center justify-center">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M20 15.74V3.67C20 2.47 19.02 1.58 17.83 1.68H17.77C15.67 1.86 12.48 2.93 10.7 4.05L10.53 4.16C10.24 4.34 9.76 4.34 9.47 4.16L9.22 4.01C7.44 2.9 4.26 1.84 2.16 1.67C0.97 1.57 0 2.47 0 3.66V15.74C0 16.7 0.78 17.6 1.74 17.72L2.03 17.76C4.2 18.05 7.55 19.15 9.47 20.2L9.51 20.22C9.78 20.37 10.21 20.37 10.47 20.22C12.39 19.16 15.75 18.05 17.93 17.76L18.26 17.72C19.22 17.6 20 16.7 20 15.74Z"
+              stroke="#709484"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M10 4.49V19.49"
+              stroke="#709484"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M5.75 7.49H3.5"
+              stroke="#709484"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M6.5 10.49H3.5"
+              stroke="#709484"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </button>
       </div>
     </>
   );
