@@ -139,7 +139,7 @@ function CategoryPage() {
         />
       </svg>
     ),
-    menuIcon: (
+    moreIcon: (
       <svg
         width="20"
         height="20"
@@ -227,7 +227,88 @@ function CategoryPage() {
         />
       </svg>
     ),
+    trophyIcon: (
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12.15 16.5V18.6"
+          stroke="#709484"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M7.15 22H17.15V21C17.15 19.9 16.25 19 15.15 19H9.15C8.05 19 7.15 19.9 7.15 21V22V22Z"
+          stroke="#709484"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M6.15 22H18.15"
+          stroke="#709484"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M12 16C8.13 16 5 12.87 5 9V6C5 3.79 6.79 2 9 2H15C17.21 2 19 3.79 19 6V9C19 12.87 15.87 16 12 16Z"
+          stroke="#709484"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M5.47 11.65C4.72 11.41 4.06 10.97 3.54 10.45C2.64 9.44998 2.04 8.24998 2.04 6.84998C2.04 5.44998 3.14 4.34998 4.54 4.34998H5.19C4.99 4.80998 4.89 5.31998 4.89 5.84998V8.84998C4.89 9.84998 5.1 10.79 5.47 11.65Z"
+          stroke="#709484"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M18.53 11.65C19.28 11.41 19.94 10.97 20.46 10.45C21.36 9.44998 21.96 8.24998 21.96 6.84998C21.96 5.44998 20.86 4.34998 19.46 4.34998H18.81C19.01 4.80998 19.11 5.31998 19.11 5.84998V8.84998C19.11 9.84998 18.9 10.79 18.53 11.65Z"
+          stroke="#709484"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    ),
+    menuIcon: (
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M3 7H21"
+          stroke="#709484"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+        />
+        <path
+          d="M3 12H21"
+          stroke="#709484"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+        />
+        <path
+          d="M3 17H21"
+          stroke="#709484"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+        />
+      </svg>
+    ),
   };
+
   return (
     <>
       {/* Responsive Sidebar - Desktop: left sidebar, Mobile: bottom bar */}
@@ -241,34 +322,47 @@ function CategoryPage() {
 
       {/* Navigation Items - Responsive layout for Desktop only */}
       <div>
-        {/* Home Icon - Desktop only */}
+        {/* Home Icon */}
         <button className="w-10 h-10 lg:rounded-xl flex items-center justify-center">
           {svgIcons?.homeIcon}
         </button>
 
-        {/* Bookmark Icon - Desktop only */}
+        {/* Bookmark Icon */}
         <button className="w-10 h-10 lg:rounded-xl flex items-center justify-center">
           {svgIcons?.bookmarkIcon}
         </button>
 
-        {/* Play Icon - Desktop only */}
+        {/* Play Icon */}
         <button className="w-10 h-10 lg:rounded-xl flex items-center justify-center">
           {svgIcons?.playIcon}
         </button>
 
-        {/* Grid/Categories Icon - Desktop only */}
+        {/* Grid/Categories Icon */}
         <button className="w-10 h-10 lg:rounded-xl flex items-center justify-center">
           {svgIcons?.categoryIcon}
         </button>
 
-        {/* More/Menu Icon - Desktop only */}
+        {/* More/Menu Icon */}
         <button className="w-10 h-10 lg:rounded-xl flex items-center justify-center">
-          {svgIcons?.menuIcon}
+          {svgIcons?.moreIcon}
         </button>
 
-        {/* Book Icon - Desktop only */}
+        {/* Book Icon */}
         <button className="w-10 h-10 lg:rounded-xl flex items-center justify-center">
           {svgIcons?.bookIcon}
+        </button>
+      </div>
+
+      {/* Bottom Icons - Desktop only */}
+      <div>
+        {/* Trophy Icon - Desktop only */}
+        <button className="w-10 h-10 rounded-xl flex items-center justify-center">
+          {svgIcons?.trophyIcon}
+        </button>
+
+        {/* Menu Icon - Desktop only */}
+        <button className="w-10 h-10 rounded-xl flex items-center justify-center">
+          {svgIcons?.menuIcon}
         </button>
       </div>
     </>
