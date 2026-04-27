@@ -423,7 +423,7 @@ function CategoryPage() {
       <main>
         <header className="bg-[#FBFFFB] flex items-center justify-between h-[64px]">
           {/* Hamburger Menu - Mobile only */}
-          <button></button>
+          <button>|||</button>
 
           {/* Left Section */}
           <div className="flex flex-col justify-center gap-[2px]">
@@ -477,6 +477,19 @@ function CategoryPage() {
                 width={16}
                 height={16}
               />
+            </div>
+          </div>
+
+          {/* Right Section - Mobile Only */}
+          <div className="flex gap-4 lg:hidden">
+            {/* Search Icon */}
+            <div className="bg-[rgba(225,235,225,0.6)] w-[48px] h-[48px] rounded-full flex items-center justify-center">
+              {svgIcons?.searchIcon}
+            </div>
+
+            {/* Color Swatch Icon */}
+            <div className="bg-[rgba(225,235,225,0.6)] w-[48px] h-[48px] rounded-full flex items-center justify-center gap-[8px]">
+              {svgIcons?.colorSwatchIcon}
             </div>
           </div>
         </header>
