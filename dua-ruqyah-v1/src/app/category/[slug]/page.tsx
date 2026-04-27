@@ -363,13 +363,29 @@ function CategoryPage() {
         />
       </svg>
     ),
+    closeIcon: (
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M18 6L6 18M6 6L18 18"
+          stroke="#666"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    ),
   };
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
 
-  const handleToggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-    console.log("clicked", isMobileMenuOpen);
+  const handleToggleMobileMenu = (open?: boolean) => {
+    setIsMobileMenuOpen((prev) => (open === undefined ? !prev : open));
   };
 
   return (
@@ -434,7 +450,7 @@ function CategoryPage() {
         <header className="bg-[#FBFFFB]  h-[64px] px-4 flex items-center justify-between">
           {/* Hamburger Menu - Mobile only */}
           <button
-            onClick={handleToggleMobileMenu}
+            onClick={() => handleToggleMobileMenu(true)}
             className="bg-[rgba(225,235,225,0.6)] w-10 h-10 rounded-full flex items-center justify-center lg:hidden"
             aria-label="Toggle Menu"
           >
@@ -510,11 +526,42 @@ function CategoryPage() {
           </div>
         </header>
 
+        {/* Navigation Overlay - Mobile Only */}
+        <div
+          className={`bg-[#F8FFFA] fixed top-0 left-0 h-full w-[90%] lg:hidden transition-all duration-300 ease-in-out ${isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"} z-50 rounded-r-4xl`}
+        >
+          {/* Header Section */}
+          <div className="flex items-center justify-between p-4 border-b border-gray-200">
+            {/* Logo & Title */}
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-[#417360] rounded-lg flex items-center justify-center">
+                {svgIcons?.duaIcon}
+              </div>
+
+              <div>
+                <h2 className="text-lg font-semibold text-gray-900">
+                  Dua & Ruqyah
+                </h2>
+
+                <p className="text-sm text-gray-600">Hisnul Muslim</p>
+              </div>
+            </div>
+
+            {/* Close Button */}
+            <button
+              className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-200 transition-colors duration-300"
+              onClick={() => handleToggleMobileMenu(false)}
+            >
+              {svgIcons?.closeIcon}
+            </button>
+          </div>
+        </div>
+
         {/* Backdrop - Mobile Only */}
         {isMobileMenuOpen && (
           <div
             className={`fixed inset-0 z-40 bg-black ${isMobileMenuOpen ? "opacity-30" : "opacity-0"}`}
-            onClick={handleToggleMobileMenu}
+            onClick={() => handleToggleMobileMenu(false)}
           />
         )}
       </main>
