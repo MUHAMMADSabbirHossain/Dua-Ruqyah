@@ -464,6 +464,20 @@ function CategoryPage() {
                 height={12}
               />
             </div>
+
+            {/* Support Button */}
+            <div className="bg-[#417360] px-[20px] py-[12px] rounded-full flex items-center gap-[8px]">
+              <span className="text-[14px] text-white font-medium">
+                Support Us
+              </span>
+
+              <Image
+                src="/icons/direct-right.svg"
+                alt="Direct Right"
+                width={16}
+                height={16}
+              />
+            </div>
           </div>
         </header>
       </main>
