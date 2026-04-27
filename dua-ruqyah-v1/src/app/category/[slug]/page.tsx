@@ -1,3 +1,11 @@
+import { Poppins } from "next/font/google";
+
+const poppinsFont = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
+
 function CategoryPage() {
   const svgIcons = {
     duaIcon: (
@@ -366,6 +374,30 @@ function CategoryPage() {
           </button>
         </div>
       </div>
+
+      <main>
+        <header className="bg-[#FBFFFB] flex items-center justify-between">
+          {/* Hamburger Menu - Mobile only */}
+          <button></button>
+
+          {/* Left Section */}
+          <div className="flex flex-col justify-center gap-[2px]">
+            <h1
+              className={`${poppinsFont.className} text-[#282E29] font-semibold text-[18px] leading-[15px] pt-[11px]`}
+            >
+              Dua <span className="text-[#417360] font-normal">&</span> Ruqyah
+            </h1>
+            <p
+              className={`${poppinsFont.className} text-[#666666] font-medium text-[11px] leading-[24px]`}
+            >
+              Hisnul Muslim
+            </p>
+          </div>
+
+          {/* Right Section */}
+          <div></div>
+        </header>
+      </main>
     </>
   );
 }
