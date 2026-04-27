@@ -1,5 +1,8 @@
+"use client";
+
 import { Poppins } from "next/font/google";
 import Image from "next/image";
+import { useState } from "react";
 
 const poppinsFont = Poppins({
   subsets: ["latin"],
@@ -362,6 +365,13 @@ function CategoryPage() {
     ),
   };
 
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
+
+  const handleToggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+    console.log("clicked", isMobileMenuOpen);
+  };
+
   return (
     <>
       {/* Responsive Sidebar - Desktop: left sidebar, Mobile: bottom bar */}
@@ -420,13 +430,19 @@ function CategoryPage() {
         </div>
       </div>
 
-      <main>
-        <header className="bg-[#FBFFFB] flex items-center justify-between h-[64px]">
+      <main className="lg:ml-[68px]">
+        <header className="bg-[#FBFFFB]  h-[64px] px-4 flex items-center justify-between">
           {/* Hamburger Menu - Mobile only */}
-          <button>|||</button>
+          <button
+            onClick={handleToggleMobileMenu}
+            className="bg-[rgba(225,235,225,0.6)] w-10 h-10 rounded-full flex items-center justify-center lg:hidden"
+            aria-label="Toggle Menu"
+          >
+            {svgIcons?.menuIcon}
+          </button>
 
           {/* Left Section */}
-          <div className="flex flex-col justify-center gap-[2px]">
+          <div className="flex flex-col justify-center gap-[2px] flex-1 ml-4">
             <h1
               className={`${poppinsFont.className} text-[#282E29] font-semibold text-[18px] leading-[15px] pt-[11px]`}
             >
@@ -493,6 +509,14 @@ function CategoryPage() {
             </div>
           </div>
         </header>
+
+        {/* Backdrop - Mobile Only */}
+        {isMobileMenuOpen && (
+          <div
+            className={`fixed inset-0 z-40 bg-black ${isMobileMenuOpen ? "opacity-30" : "opacity-0"}`}
+            onClick={handleToggleMobileMenu}
+          />
+        )}
       </main>
     </>
   );
