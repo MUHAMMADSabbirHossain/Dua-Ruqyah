@@ -447,13 +447,22 @@ function CategoryPage() {
             </div>
 
             {/* Color Swatch Icon */}
-            <div className="bg-[rgba(225,235,225,0.6)] w-[48px] h-[48px] rounded-full flex items-center justify-center">
+            <div className="bg-[rgba(225,235,225,0.6)] w-[48px] h-[48px] rounded-full flex items-center justify-center gap-[8px]">
               {svgIcons?.colorSwatchIcon}
             </div>
 
             {/* Language Selector */}
-            <div className="bg-[rgba(225,235,225,0.6)] px-[16px] py-[12px] rounded-full">
-              <Image src="/flag.png" alt="Flag" width={24} height={16} />
+            <div className="bg-[rgba(225,235,225,0.6)] px-[16px] py-[12px] rounded-full flex items-center gap-[8px]">
+              <Image src="/images/flag.png" alt="Flag" width={24} height={16} />
+
+              <span className={`text-[#282E29] text-[14px]`}>En</span>
+
+              <Image
+                src="/icons/arrow-down.svg"
+                alt="Arrow Down"
+                width={12}
+                height={12}
+              />
             </div>
           </div>
         </header>
