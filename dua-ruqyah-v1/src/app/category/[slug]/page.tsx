@@ -1,4 +1,5 @@
 import { Poppins } from "next/font/google";
+import Image from "next/image";
 
 const poppinsFont = Poppins({
   subsets: ["latin"],
@@ -448,6 +449,11 @@ function CategoryPage() {
             {/* Color Swatch Icon */}
             <div className="bg-[rgba(225,235,225,0.6)] w-[48px] h-[48px] rounded-full flex items-center justify-center">
               {svgIcons?.colorSwatchIcon}
+            </div>
+
+            {/* Language Selector */}
+            <div className="bg-[rgba(225,235,225,0.6)] px-[16px] py-[12px] rounded-full">
+              <Image src="/flag.png" alt="Flag" width={24} height={16} />
             </div>
           </div>
         </header>
