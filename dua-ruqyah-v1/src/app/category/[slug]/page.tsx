@@ -564,6 +564,40 @@ function CategoryPage() {
             onClick={() => handleToggleMobileMenu(false)}
           />
         )}
+
+        <div className="hidden xl:block">
+          {/* Right Sidebar */}
+          <div
+            className={`bg-[#F7FFFB] h-[calc(100vh-64px)] w-[352px] pt-[14px] border-l border-[#E1EBE1]`}
+          >
+            {/* Font Settings Section */}
+            <div className="px-6">
+              <div className="flex items-center gap-4 py-[10px]">
+                <div className="ml-2">
+                  <Image
+                    src="/icons/font-settings-icon.svg"
+                    alt="Font Settings"
+                    width={34}
+                    height={34}
+                  />
+                </div>
+
+                <h3 className="text-[#417360] text-sm font-semibold flex-1">
+                  Font Settings
+                </h3>
+
+                <div className="mr-2">
+                  <Image
+                    src="/icons/arrow-up-icon.svg"
+                    alt="Up Arrow Icon"
+                    width={14}
+                    height={14}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </main>
     </>
   );
