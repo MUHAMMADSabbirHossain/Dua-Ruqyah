@@ -380,6 +380,17 @@ function CategoryPage() {
         />
       </svg>
     ),
+    rightArrowIcon: (
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <path
+          d="M9.17 6.42L13.75 11L9.17 15.58"
+          stroke="#1D1B20"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    ),
   };
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
@@ -674,6 +685,24 @@ function CategoryPage() {
                     <span className="text-[#417360] text-sm font-semibold">
                       {translationFontSize}
                     </span>
+                  </div>
+                </div>
+
+                {/* Arabic Script & Font Face */}
+                <div className="">
+                  <div className="px-2 mb-3">
+                    <label
+                      htmlFor=""
+                      className="text-[#282E29] text-sm font-medium"
+                    >
+                      Translation Font Size
+                    </label>
+                  </div>
+                  <div className="mx-2">
+                    <div className="bg-[#EBF9EC] rounded-lg border border-[#E2E8F0] py-[13px] px-4 flex items-center justify-between cursor-pointer hover:bg-[#F8FAFC] transition-colors duration-300 ease-linear">
+                      <span className="text-[#282E29] text-sm">Uthma</span>
+                      {svgIcons.rightArrowIcon}
+                    </div>
                   </div>
                 </div>
               </div>
