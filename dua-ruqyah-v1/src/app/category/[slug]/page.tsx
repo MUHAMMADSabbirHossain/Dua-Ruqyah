@@ -384,6 +384,7 @@ function CategoryPage() {
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const [arabicFontSize, setArabicFontSize] = useState<number>(24);
+  const [translationFontSize, setTranslationFontSize] = useState<number>(18);
 
   const handleToggleMobileMenu = (open?: boolean) => {
     setIsMobileMenuOpen((prev) => (open === undefined ? !prev : open));
@@ -636,9 +637,46 @@ function CategoryPage() {
                     </span>
                   </div>
                 </div>
-              </div>
 
-              {/*  */}
+                {/* Translation Font Size */}
+                <div className="">
+                  <div className="px-2 mb-3">
+                    <label
+                      htmlFor=""
+                      className="text-[#282E29] text-sm font-medium"
+                    >
+                      Translation Font Size
+                    </label>
+                  </div>
+                  <div className="flex items-center gap-4 px-2">
+                    <div className="flex-1">
+                      {/* <div>
+                        <div></div>
+                        <div></div>
+                      </div> */}
+                      <input
+                        type="range"
+                        name=""
+                        id=""
+                        value={translationFontSize}
+                        onChange={(e) =>
+                          setTranslationFontSize(Number(e.target.value))
+                        }
+                        min={12}
+                        max={40}
+                        step={1}
+                        style={{
+                          background: `linear-gradient(90deg, #417360 ${((translationFontSize - 12) / 28) * 100}%, #e5e7eb ${((translationFontSize - 12) / 28) * 100}%)`,
+                        }}
+                        className="w-full h-2 appearance-none cursor-pointer accent-[#417360] rounded-full"
+                      />
+                    </div>
+                    <span className="text-[#417360] text-sm font-semibold">
+                      {translationFontSize}
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
