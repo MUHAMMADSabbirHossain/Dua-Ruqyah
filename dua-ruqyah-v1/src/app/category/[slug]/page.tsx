@@ -538,7 +538,6 @@ function CategoryPage() {
             </div>
           </div>
         </header>
-
         {/* Navigation Overlay - Mobile Only */}
         <div
           className={`bg-[#F8FFFA] fixed top-0 left-0 h-full w-[90%] lg:hidden transition-all duration-300 ease-in-out ${isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"} z-50 rounded-r-4xl`}
@@ -569,7 +568,6 @@ function CategoryPage() {
             </button>
           </div>
         </div>
-
         {/* Backdrop - Mobile Only */}
         {isMobileMenuOpen && (
           <div
@@ -578,8 +576,8 @@ function CategoryPage() {
           />
         )}
 
-        <div className="hidden xl:block">
-          {/* Right Sidebar */}
+        {/* Right Sidebar */}
+        <div className="hidden 2xl:block">
           <div
             className={`bg-[#F7FFFB] h-[calc(100vh-64px)] w-[352px] pt-[14px] border-l border-[#E1EBE1]`}
           >
@@ -721,6 +719,31 @@ function CategoryPage() {
                 </div>
                 <h3 className="text-[#282E29] text-sm font-medium flex-1">
                   View Settings
+                </h3>
+                <div className="mr-2">
+                  <Image
+                    src="/icons/arrow-down.svg"
+                    alt="Arrow"
+                    width={14}
+                    height={14}
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Appearance Settings Section */}
+            <div className="px-6 pb-6">
+              <div className="flex items-center gap-4 cursor-pointer py-[10px] rounded-xl">
+                <div className="ml-2">
+                  <Image
+                    src="/icons/appearance-settings-icon.svg"
+                    alt="Appearance Settings"
+                    width={34}
+                    height={34}
+                  />
+                </div>
+                <h3 className="text-[#282E29] text-sm font-medium flex-1">
+                  Appearance Settings
                 </h3>
                 <div className="mr-2">
                   <Image
