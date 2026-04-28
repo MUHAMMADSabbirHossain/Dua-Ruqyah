@@ -611,7 +611,7 @@ function CategoryPage() {
 
               <div className="mt-6 space-y-[22px]">
                 {/* Arabic Font Size */}
-                <div className="">
+                <div className="pb-2 px-2">
                   <div className="px-2 mb-3">
                     <label
                       htmlFor=""
@@ -650,7 +650,7 @@ function CategoryPage() {
                 </div>
 
                 {/* Translation Font Size */}
-                <div className="">
+                <div className="pb-2 px-2">
                   <div className="px-2 mb-3">
                     <label
                       htmlFor=""
@@ -689,7 +689,7 @@ function CategoryPage() {
                 </div>
 
                 {/* Arabic Script & Font Face */}
-                <div className="">
+                <div className="pb-2">
                   <div className="px-2 mb-3">
                     <label
                       htmlFor=""
@@ -704,6 +704,31 @@ function CategoryPage() {
                       {svgIcons.rightArrowIcon}
                     </div>
                   </div>
+                </div>
+              </div>
+            </div>
+
+            {/* View Settings Section */}
+            <div className="px-6 pb-6">
+              <div className="flex items-center gap-4 cursor-pointer py-[10px] rounded-xl">
+                <div className="ml-2">
+                  <Image
+                    src="/icons/view-settings-icon.svg"
+                    alt="View Settings"
+                    width={34}
+                    height={34}
+                  />
+                </div>
+                <h3 className="text-[#282E29] text-sm font-medium flex-1">
+                  View Settings
+                </h3>
+                <div className="mr-2">
+                  <Image
+                    src="/icons/arrow-down.svg"
+                    alt="Arrow"
+                    width={14}
+                    height={14}
+                  />
                 </div>
               </div>
             </div>
