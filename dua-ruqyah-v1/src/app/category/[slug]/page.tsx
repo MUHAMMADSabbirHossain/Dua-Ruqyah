@@ -618,12 +618,9 @@ function CategoryPage() {
                       Arabic Font Size
                     </label>
                   </div>
+
                   <div className="flex items-center gap-4 px-2">
                     <div className="flex-1">
-                      {/* <div>
-                        <div></div>
-                        <div></div>
-                      </div> */}
                       <input
                         type="range"
                         name=""
@@ -657,12 +654,9 @@ function CategoryPage() {
                       Translation Font Size
                     </label>
                   </div>
+
                   <div className="flex items-center gap-4 px-2">
                     <div className="flex-1">
-                      {/* <div>
-                        <div></div>
-                        <div></div>
-                      </div> */}
                       <input
                         type="range"
                         name=""
