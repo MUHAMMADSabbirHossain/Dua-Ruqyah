@@ -498,7 +498,13 @@ function CategoryPage() {
 
             {/* Language Selector */}
             <div className="bg-[rgba(225,235,225,0.6)] px-[16px] py-[12px] rounded-full flex items-center gap-[8px]">
-              <Image src="/images/flag.png" alt="Flag" width={24} height={16} />
+              <Image
+                src="/images/flag.png"
+                alt="Flag"
+                width={24}
+                height={24}
+                className="w-auto"
+              />
 
               <span className={`text-[#282E29] text-[14px]`}>En</span>
 
