@@ -644,7 +644,11 @@ function CategoryPage() {
                   {/* Level 1 */}
                   <div>
                     <div>
-                      <div>{renderIcon(catelogCategory?.icon_path)}</div>
+                      <div>
+                        {renderIcon(catelogCategory?.icon_path)}
+
+                        {catelogCategory?.icon_path}
+                      </div>
                       <div>
                         <h3>{catelogCategory?.name}</h3>
 
