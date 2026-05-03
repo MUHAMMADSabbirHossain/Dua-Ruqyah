@@ -84,7 +84,7 @@ export async function GET(req: NextRequest) {
               WHERE subcategories.category_id = categories.id
             ) AS subcategories
           FROM categories
-          ORDER BY categories.sort_order ASC, categories.id AS
+          ORDER BY categories.sort_order ASC, categories.id ASC
         `,
       )
       .all() as RawCategoryRow[];
