@@ -1,683 +1,46 @@
-import db from "@/lib/database";
 import { NextRequest, NextResponse } from "next/server";
+import db from "@/lib/database";
 
-const data = [
-  {
-    id: 121,
-    name: "Dua's Importance",
-    name_ar: null,
-    slug: "duas-importance",
-    icon_path: "/icons/duas-importance.svg",
-    sort_order: 1,
-    is_active: 1,
-    children: [
-      {
-        id: 160,
-        name: "The servant is dependent on his Lord",
-        slug: "dependent-on-his-lord",
-        icon_path: null,
-        sort_order: 1,
-        is_active: 1,
-        children: [
-          {
-            id: 33,
-            name: "01. We Are in Need of Allah's Help (Surah Al-Fatiha)",
-            slug: "we-are-in-need-of-allahs-help",
-            icon_path: null,
-            sort_order: 1,
-            is_active: 1,
-          },
-          {
-            id: 34,
-            name: "02. Dua After Prayer for Rizq and Help",
-            slug: "dua-after-prayer-for-rizq",
-            icon_path: null,
-            sort_order: 2,
-            is_active: 1,
-          },
-          {
-            id: 35,
-            name: "03. Power of La ilaha illallah (Freeing of slave)",
-            slug: "power-of-la-ilaha-illallah",
-            icon_path: null,
-            sort_order: 3,
-            is_active: 1,
-          },
-        ],
-      },
-      {
-        id: 161,
-        name: "The most important thing to ask Allah for",
-        slug: "most-important-to-ask",
-        icon_path: null,
-        sort_order: 2,
-        is_active: 1,
-        children: [
-          {
-            id: 36,
-            name: "04. Dua for Guidance (Recitation of Surah Al-Fatiha)",
-            slug: "dua-for-guidance-al-fatiha",
-            icon_path: null,
-            sort_order: 4,
-            is_active: 1,
-          },
-          {
-            id: 37,
-            name: "05. Ask for paradise & protection from fire",
-            slug: "ask-for-paradise-protection",
-            icon_path: null,
-            sort_order: 5,
-            is_active: 1,
-          },
-          {
-            id: 38,
-            name: "06. Dua to remain steadfast on the religion",
-            slug: "dua-remain-steadfast",
-            icon_path: null,
-            sort_order: 6,
-            is_active: 1,
-          },
-        ],
-      },
-      {
-        id: 162,
-        name: "Ask for paradise & protection from fire",
-        slug: "ask-for-paradise-protection",
-        icon_path: null,
-        sort_order: 3,
-        is_active: 1,
-        children: [],
-      },
-    ],
-  },
-  {
-    id: 122,
-    name: "Azan & Iqamah",
-    name_ar: null,
-    slug: "azan-iqamah",
-    icon_path: "/icons/azan-ikamot.png",
-    sort_order: 2,
-    is_active: 1,
-    children: [
-      {
-        id: 147,
-        name: "After Azan",
-        slug: "after-azan",
-        icon_path: null,
-        sort_order: 1,
-        is_active: 1,
-        children: [],
-      },
-      {
-        id: 148,
-        name: "Before Iqamah",
-        slug: "before-iqamah",
-        icon_path: null,
-        sort_order: 2,
-        is_active: 1,
-        children: [],
-      },
-      {
-        id: 149,
-        name: "Entering Mosque",
-        slug: "entering-mosque",
-        icon_path: null,
-        sort_order: 3,
-        is_active: 1,
-        children: [],
-      },
-    ],
-  },
-  {
-    id: 123,
-    name: "Accepted Duas",
-    name_ar: null,
-    slug: "whose-dua-accepted",
-    icon_path: "/icons/jader-dua-kobul-hoy.png",
-    sort_order: 3,
-    is_active: 1,
-    children: [
-      {
-        id: 188,
-        name: "General Duas",
-        slug: "whose-dua-accepted-general",
-        icon_path: null,
-        sort_order: 1,
-        is_active: 1,
-        children: [],
-      },
-      {
-        id: 189,
-        name: "Special Occasions",
-        slug: "whose-dua-accepted-special",
-        icon_path: null,
-        sort_order: 2,
-        is_active: 1,
-        children: [],
-      },
-    ],
-  },
-  {
-    id: 124,
-    name: "Call to Prayer",
-    name_ar: null,
-    slug: "adhan-drum",
-    icon_path: "/icons/bedug.png",
-    sort_order: 4,
-    is_active: 1,
-    children: [
-      {
-        id: 145,
-        name: "General Duas",
-        slug: "adhan-drum-general",
-        icon_path: null,
-        sort_order: 1,
-        is_active: 1,
-        children: [],
-      },
-      {
-        id: 146,
-        name: "Special Occasions",
-        slug: "adhan-drum-special",
-        icon_path: null,
-        sort_order: 2,
-        is_active: 1,
-        children: [],
-      },
-    ],
-  },
-  {
-    id: 125,
-    name: "Special Occasions",
-    name_ar: null,
-    slug: "calendar",
-    icon_path: "/icons/calendar.png",
-    sort_order: 5,
-    is_active: 1,
-    children: [
-      {
-        id: 152,
-        name: "General Duas",
-        slug: "calendar-general",
-        icon_path: null,
-        sort_order: 1,
-        is_active: 1,
-        children: [],
-      },
-      {
-        id: 153,
-        name: "Special Occasions",
-        slug: "calendar-special",
-        icon_path: null,
-        sort_order: 2,
-        is_active: 1,
-        children: [],
-      },
-    ],
-  },
-  {
-    id: 126,
-    name: "Night Prayers",
-    name_ar: null,
-    slug: "candle",
-    icon_path: "/icons/candle.png",
-    sort_order: 6,
-    is_active: 1,
-    children: [
-      {
-        id: 154,
-        name: "General Duas",
-        slug: "candle-general",
-        icon_path: null,
-        sort_order: 1,
-        is_active: 1,
-        children: [],
-      },
-      {
-        id: 155,
-        name: "Special Occasions",
-        slug: "candle-special",
-        icon_path: null,
-        sort_order: 2,
-        is_active: 1,
-        children: [],
-      },
-    ],
-  },
-  {
-    id: 127,
-    name: "Charity & Giving",
-    name_ar: null,
-    slug: "charity",
-    icon_path: "/icons/charity.png",
-    sort_order: 7,
-    is_active: 1,
-    children: [
-      {
-        id: 156,
-        name: "General Duas",
-        slug: "charity-general",
-        icon_path: null,
-        sort_order: 1,
-        is_active: 1,
-        children: [],
-      },
-      {
-        id: 157,
-        name: "Special Occasions",
-        slug: "charity-special",
-        icon_path: null,
-        sort_order: 2,
-        is_active: 1,
-        children: [],
-      },
-    ],
-  },
-  {
-    id: 128,
-    name: "Morning & Evening",
-    name_ar: null,
-    slug: "morning-evening",
-    icon_path: "/icons/sokal-sondha.png",
-    sort_order: 8,
-    is_active: 1,
-    children: [
-      {
-        id: 179,
-        name: "Morning Dhikr",
-        slug: "morning-dhikr",
-        icon_path: null,
-        sort_order: 1,
-        is_active: 1,
-        children: [],
-      },
-      {
-        id: 180,
-        name: "Evening Dhikr",
-        slug: "evening-dhikr",
-        icon_path: null,
-        sort_order: 2,
-        is_active: 1,
-        children: [],
-      },
-      {
-        id: 181,
-        name: "Protection Duas",
-        slug: "protection-duas",
-        icon_path: null,
-        sort_order: 3,
-        is_active: 1,
-        children: [],
-      },
-    ],
-  },
-  {
-    id: 129,
-    name: "Dates & Times",
-    name_ar: null,
-    slug: "dates",
-    icon_path: "/icons/dates.png",
-    sort_order: 9,
-    is_active: 1,
-    children: [
-      {
-        id: 158,
-        name: "General Duas",
-        slug: "dates-general",
-        icon_path: null,
-        sort_order: 1,
-        is_active: 1,
-        children: [],
-      },
-      {
-        id: 159,
-        name: "Special Occasions",
-        slug: "dates-special",
-        icon_path: null,
-        sort_order: 2,
-        is_active: 1,
-        children: [],
-      },
-    ],
-  },
-  {
-    id: 130,
-    name: "Mosque Etiquette",
-    name_ar: null,
-    slug: "masjid",
-    icon_path: "/icons/masjid.png",
-    sort_order: 10,
-    is_active: 1,
-    children: [
-      {
-        id: 177,
-        name: "General Duas",
-        slug: "masjid-general",
-        icon_path: null,
-        sort_order: 1,
-        is_active: 1,
-        children: [],
-      },
-      {
-        id: 178,
-        name: "Special Occasions",
-        slug: "masjid-special",
-        icon_path: null,
-        sort_order: 2,
-        is_active: 1,
-        children: [],
-      },
-    ],
-  },
-  {
-    id: 131,
-    name: "Food & Drink",
-    name_ar: null,
-    slug: "food-drink",
-    icon_path: "/icons/eat.png",
-    sort_order: 11,
-    is_active: 1,
-    children: [
-      {
-        id: 165,
-        name: "Before Eating",
-        slug: "before-eating",
-        icon_path: null,
-        sort_order: 1,
-        is_active: 1,
-        children: [],
-      },
-      {
-        id: 166,
-        name: "After Eating",
-        slug: "after-eating",
-        icon_path: null,
-        sort_order: 2,
-        is_active: 1,
-        children: [],
-      },
-      {
-        id: 167,
-        name: "Drinking Water",
-        slug: "drinking-water",
-        icon_path: null,
-        sort_order: 3,
-        is_active: 1,
-        children: [],
-      },
-    ],
-  },
-  {
-    id: 132,
-    name: "Fasting",
-    name_ar: null,
-    slug: "fasting",
-    icon_path: "/icons/fasting.png",
-    sort_order: 12,
-    is_active: 1,
-    children: [
-      {
-        id: 163,
-        name: "General Duas",
-        slug: "fasting-general",
-        icon_path: null,
-        sort_order: 1,
-        is_active: 1,
-        children: [],
-      },
-      {
-        id: 164,
-        name: "Special Occasions",
-        slug: "fasting-special",
-        icon_path: null,
-        sort_order: 2,
-        is_active: 1,
-        children: [],
-      },
-    ],
-  },
-  {
-    id: 133,
-    name: "Giving & Donation",
-    name_ar: null,
-    slug: "giving",
-    icon_path: "/icons/giving.png",
-    sort_order: 13,
-    is_active: 1,
-    children: [
-      {
-        id: 168,
-        name: "General Duas",
-        slug: "giving-general",
-        icon_path: null,
-        sort_order: 1,
-        is_active: 1,
-        children: [],
-      },
-      {
-        id: 169,
-        name: "Special Occasions",
-        slug: "giving-special",
-        icon_path: null,
-        sort_order: 2,
-        is_active: 1,
-        children: [],
-      },
-    ],
-  },
-  {
-    id: 134,
-    name: "Sawm & Iftar",
-    name_ar: null,
-    slug: "sawm-iftar",
-    icon_path: "/icons/siam-iftar.png",
-    sort_order: 14,
-    is_active: 1,
-    children: [
-      {
-        id: 182,
-        name: "General Duas",
-        slug: "sawm-iftar-general",
-        icon_path: null,
-        sort_order: 1,
-        is_active: 1,
-        children: [],
-      },
-      {
-        id: 183,
-        name: "Special Occasions",
-        slug: "sawm-iftar-special",
-        icon_path: null,
-        sort_order: 2,
-        is_active: 1,
-        children: [],
-      },
-    ],
-  },
-  {
-    id: 135,
-    name: "Infaq & Spending",
-    name_ar: null,
-    slug: "infaq",
-    icon_path: "/icons/infaq.png",
-    sort_order: 15,
-    is_active: 1,
-    children: [
-      {
-        id: 172,
-        name: "General Duas",
-        slug: "infaq-general",
-        icon_path: null,
-        sort_order: 1,
-        is_active: 1,
-        children: [],
-      },
-      {
-        id: 173,
-        name: "Special Occasions",
-        slug: "infaq-special",
-        icon_path: null,
-        sort_order: 2,
-        is_active: 1,
-        children: [],
-      },
-    ],
-  },
-  {
-    id: 136,
-    name: "Hajj & Umrah",
-    name_ar: null,
-    slug: "hajj-umrah",
-    icon_path: "/icons/hajj-omra.png",
-    sort_order: 16,
-    is_active: 1,
-    children: [
-      {
-        id: 170,
-        name: "General Duas",
-        slug: "hajj-umrah-general",
-        icon_path: null,
-        sort_order: 1,
-        is_active: 1,
-        children: [],
-      },
-      {
-        id: 171,
-        name: "Special Occasions",
-        slug: "hajj-umrah-special",
-        icon_path: null,
-        sort_order: 2,
-        is_active: 1,
-        children: [],
-      },
-    ],
-  },
-  {
-    id: 137,
-    name: "Blessed Duas",
-    name_ar: null,
-    slug: "blessed-masnun-duas",
-    icon_path: "/icons/borkotmoy-masnun-dua.png",
-    sort_order: 17,
-    is_active: 1,
-    children: [
-      {
-        id: 150,
-        name: "General Duas",
-        slug: "blessed-masnun-duas-general",
-        icon_path: null,
-        sort_order: 1,
-        is_active: 1,
-        children: [],
-      },
-      {
-        id: 151,
-        name: "Special Occasions",
-        slug: "blessed-masnun-duas-special",
-        icon_path: null,
-        sort_order: 2,
-        is_active: 1,
-        children: [],
-      },
-    ],
-  },
-  {
-    id: 138,
-    name: "When to Say What",
-    name_ar: null,
-    slug: "when-to-say-what",
-    icon_path: "/icons/kokhon-ki-bolte-hoy.png",
-    sort_order: 18,
-    is_active: 1,
-    children: [
-      {
-        id: 186,
-        name: "General Duas",
-        slug: "when-to-say-what-general",
-        icon_path: null,
-        sort_order: 1,
-        is_active: 1,
-        children: [],
-      },
-      {
-        id: 187,
-        name: "Special Occasions",
-        slug: "when-to-say-what-special",
-        icon_path: null,
-        sort_order: 2,
-        is_active: 1,
-        children: [],
-      },
-    ],
-  },
-  {
-    id: 139,
-    name: "Dhikr Benefits",
-    name_ar: null,
-    slug: "virtues-of-dhikr",
-    icon_path: "/icons/zikirer-fozilot.png",
-    sort_order: 19,
-    is_active: 1,
-    children: [
-      {
-        id: 184,
-        name: "General Duas",
-        slug: "virtues-of-dhikr-general",
-        icon_path: null,
-        sort_order: 1,
-        is_active: 1,
-        children: [],
-      },
-      {
-        id: 185,
-        name: "Special Occasions",
-        slug: "virtues-of-dhikr-special",
-        icon_path: null,
-        sort_order: 2,
-        is_active: 1,
-        children: [],
-      },
-    ],
-  },
-  {
-    id: 140,
-    name: "Prayer Duas",
-    name_ar: null,
-    slug: "inside-prayer-witr",
-    icon_path: "/icons/bitorer-namaz.png",
-    sort_order: 20,
-    is_active: 1,
-    children: [
-      {
-        id: 174,
-        name: "Before Prayer",
-        slug: "before-prayer",
-        icon_path: null,
-        sort_order: 1,
-        is_active: 1,
-        children: [],
-      },
-      {
-        id: 175,
-        name: "During Prayer",
-        slug: "during-prayer",
-        icon_path: null,
-        sort_order: 2,
-        is_active: 1,
-        children: [],
-      },
-      {
-        id: 176,
-        name: "After Prayer",
-        slug: "after-prayer",
-        icon_path: null,
-        sort_order: 3,
-        is_active: 1,
-        children: [],
-      },
-    ],
-  },
-];
+interface SubSubCategory {
+  id: number;
+  name: string;
+  slug: string;
+  icon_path: string | null;
+  sort_order: number;
+  is_active: boolean;
+}
+
+interface SubCategory {
+  id: number;
+  name: string;
+  slug: string;
+  icon_path: string | null;
+  sort_order: number;
+  is_active: boolean;
+  sub_subcategories: SubSubCategory[];
+}
+
+interface Category {
+  id: number;
+  name: string;
+  name_ar: string;
+  slug: string;
+  icon_path: string | null;
+  sort_order: number;
+  is_active: boolean;
+  subcategories: SubCategory[];
+}
+
+interface RawCategoryRow {
+  id: number;
+  name: string;
+  name_ar: string;
+  slug: string;
+  icon_path: string | null;
+  sort_order: number;
+  is_active: number; // SQLite returns 0/1 for booleans
+  subcategories: string | null; // JSON string from SQLite
+}
 
 export async function GET(req: NextRequest) {
   try {
@@ -696,10 +59,20 @@ export async function GET(req: NextRequest) {
               SELECT JSON_GROUP_ARRAY(
                 JSON_OBJECT(
                   'id', subcategories.id,
+                  'name', subcategories.name,
+                  'slug', subcategories.slug,
+                  'icon_path', subcategories.icon_path,
+                  'sort_order', subcategories.sort_order,
+                  'is_active', subcategories.is_active,
                   'sub_subcategories', (
                     SELECT JSON_GROUP_ARRAY(
                       JSON_OBJECT(
-                        'id', sub_subcategories.id
+                        'id', sub_subcategories.id,
+                        'name', sub_subcategories.name,
+                        'slug', sub_subcategories.slug,
+                        'icon_path', sub_subcategories.icon_path,
+                        'sort_order', sub_subcategories.sort_order,
+                        'is_active', sub_subcategories.is_active
                       )
                     )
                     FROM sub_subcategories
@@ -711,20 +84,56 @@ export async function GET(req: NextRequest) {
               WHERE subcategories.category_id = categories.id
             ) AS subcategories
           FROM categories
+          ORDER BY categories.sort_order ASC, categories.id AS
         `,
       )
-      .all();
+      .all() as RawCategoryRow[];
 
-    return NextResponse.json({
-      success: true,
-      message: "Categories fetched successfully",
-      data: result,
-      count: 20,
-    });
+    // Parse JSON string to array of objects
+    const parseResult: Category[] = result.map((row) => ({
+      id: row.id,
+      name: row.name,
+      name_ar: row.name_ar,
+      slug: row.slug,
+      icon_path: row.icon_path,
+      sort_order: row.sort_order,
+      is_active: Boolean(row.is_active), // Convert 0/1 to boolean
+      subcategories: row.subcategories ? JSON.parse(row.subcategories) : [],
+    }));
+
+    return NextResponse.json(
+      {
+        status: 200,
+        success: true,
+        error: null,
+        message: "Categories fetched successfully",
+        count: parseResult.length,
+        data: parseResult,
+      },
+      { status: 200 },
+    );
   } catch (error) {
-    return NextResponse.json({
-      success: false,
-      message: "Failed to fetch categories",
-    });
+    console.log("error: ", error);
+
+    return NextResponse.json(
+      {
+        status: 500,
+        success: false,
+        message: "Something went wrong. Internal server error.",
+        // error:
+        //   process.env.NODE_ENV === "development"
+        //     ? Object.getOwnPropertyNames(error).reduce(
+        //         (acc: Record<string, unknown>, key: string) => {
+        //           acc[key] = error[key];
+        //           return acc;
+        //         },
+        //         {} as Record<string, unknown>,
+        //       )
+        //     : undefined,
+        error: error,
+        data: null,
+      },
+      { status: 500 },
+    );
   }
 }
