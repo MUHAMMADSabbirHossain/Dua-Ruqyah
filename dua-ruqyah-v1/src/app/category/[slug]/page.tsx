@@ -418,10 +418,28 @@ function CategoryPage() {
         />
       </svg>
     ),
+    loadingIcon: (
+      <svg
+        className="mr-3 size-5 animate-spin"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="#282E29"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M21 12a9 9 0 11-9-9 9.75 9.75 0 016.719 2.855" />
+      </svg>
+    ),
   };
 
   const router = useRouter();
-
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState({
+    message: "",
+    status: false,
+  });
+  // const [errorMessage, setErrorMessage] = useState<string>("");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const [arabicFontSize, setArabicFontSize] = useState<number>(24);
   const [translationFontSize, setTranslationFontSize] = useState<number>(18);
@@ -432,6 +450,12 @@ function CategoryPage() {
   };
 
   useEffect(() => {
+    setLoading(true);
+    setError({
+      message: "",
+      status: false,
+    });
+
     async function fetchData() {
       try {
         const result = await fetch("/api/v1/catelog/category");
@@ -445,8 +469,15 @@ function CategoryPage() {
         ) {
           setCatelogCategories(data?.data || []);
         }
-      } catch (error) {
-        console.log("error: ", error);
+      } catch (err) {
+        const error = err as Error;
+
+        setError({
+          message: error.message || "Failed to load categories",
+          status: true,
+        });
+      } finally {
+        setLoading(false);
       }
     }
     fetchData();
@@ -641,7 +672,23 @@ function CategoryPage() {
             <div className="border-b p-4 border-[#E1EBE1]">Search Bar</div>
 
             {/* Category */}
-            <div className="px-4  py-2 space-y-2">
+            <div className="px-4 py-2 space-y-2">
+              {/* Loading - if categories api is loading. */}
+              {loading && (
+                <div className="text-sm text-[#7C827D] px-3 py-2 flex items-center">
+                  {svgIcons?.loadingIcon}
+                  Loading Categories...
+                </div>
+              )}
+
+              {/* Error Message - If categories api is failed.*/}
+              {error.status === true && (
+                <div className="text-sm text-red-600 px-3 py-2">
+                  {error.message || "Failed to load categories"}
+                </div>
+              )}
+
+              {/* Categories Catalog - If load successfully */}
               {catelogCategories.map((catelogCategory) => (
                 <div key={catelogCategory?.id} className="">
                   {/* Level 1 */}
