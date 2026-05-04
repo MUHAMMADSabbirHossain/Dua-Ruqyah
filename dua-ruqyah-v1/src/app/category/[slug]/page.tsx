@@ -2,7 +2,7 @@
 
 import { Poppins } from "next/font/google";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const poppinsFont = Poppins({
@@ -434,17 +434,24 @@ function renderIcon(iconPath?: string | null) {
 }
 
 function CategoryPage() {
+  const categorySlug = useParams().slug;
+
   const router = useRouter();
+
   const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState({
+  const [error, setError] = useState<{
+    message: string;
+    status: boolean;
+  }>({
     message: "",
     status: false,
   });
-  // const [errorMessage, setErrorMessage] = useState<string>("");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const [arabicFontSize, setArabicFontSize] = useState<number>(24);
   const [translationFontSize, setTranslationFontSize] = useState<number>(18);
   const [catelogCategories, setCatelogCategories] = useState([]);
+  const [selectedExpandingCategory, setSelectedExpandingCategory] =
+    useState<number>(121);
 
   const handleToggleMobileMenu = (open?: boolean) => {
     setIsMobileMenuOpen((prev) => (open === undefined ? !prev : open));
@@ -457,11 +464,11 @@ function CategoryPage() {
       status: false,
     });
 
+    // Handle API call to get catelog categories and store in catelogCategories
     async function fetchData() {
       try {
-        const result = await fetch("/api/v1/catelog/category");
+        const result = await fetch(`/api/v1/catelog/category`);
         const data = await result.json();
-        // console.log(data);
 
         if (
           data?.status === 200 &&
@@ -484,7 +491,22 @@ function CategoryPage() {
     fetchData();
   }, []);
 
-  // console.log(catelogCategories);
+  useEffect(() => {
+    if (categorySlug && categorySlug.length > 0) {
+      const currentCategory = catelogCategories.find((c) => {
+        return c?.slug === categorySlug;
+      });
+      console.log(currentCategory);
+
+      // Expand current category
+      if (currentCategory) {
+        setSelectedExpandingCategory(currentCategory.id);
+
+        // Expand sub category
+      }
+    }
+  }, [categorySlug, catelogCategories]);
+
   return (
     <>
       {/* Responsive Sidebar - Desktop: left sidebar, Mobile: bottom bar */}
@@ -720,6 +742,27 @@ function CategoryPage() {
 
                     {/* Expand/Collapse Button */}
                   </div>
+
+                  {/* Level 2 - Sub categories */}
+                  {selectedExpandingCategory === catelogCategory?.id && (
+                    <div>
+                      {/*  */}
+                      <div></div>
+
+                      {catelogCategory?.subcategories.map((subCategory) => (
+                        <div key={subCategory?.id}>
+                          <div onClick={() => {}}>
+                            {/*  */}
+                            <div></div>
+
+                            <div>{subCategory?.name}</div>
+
+                            <div>{subCategory?.sub_subcategories?.length}</div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
