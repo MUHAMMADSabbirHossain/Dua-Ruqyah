@@ -452,6 +452,8 @@ function CategoryPage() {
   const [catelogCategories, setCatelogCategories] = useState([]);
   const [selectedExpandingCategory, setSelectedExpandingCategory] =
     useState<number>(121);
+  const [selectedExpandingSubCategory, setSelectedExpandingSubCategory] =
+    useState<number>(160);
 
   const handleToggleMobileMenu = (open?: boolean) => {
     setIsMobileMenuOpen((prev) => (open === undefined ? !prev : open));
@@ -491,21 +493,30 @@ function CategoryPage() {
     fetchData();
   }, []);
 
+  // Handle side bar collapse categories and sub categoriess
   useEffect(() => {
     if (categorySlug && categorySlug.length > 0) {
       const currentCategory = catelogCategories.find((c) => {
         return c?.slug === categorySlug;
       });
-      console.log(currentCategory);
 
-      // Expand current category
-      if (currentCategory) {
+      // Level 1 - Expand current category
+      if (currentCategory && currentCategory?.subcategories?.length > 0) {
         setSelectedExpandingCategory(currentCategory.id);
 
-        // Expand sub category
+        // Level 2 - Expand current sub category
+        const currentSubCategory = currentCategory?.subcategories?.find(
+          (subCategory) => {
+            return subCategory?.id === selectedExpandingSubCategory;
+          },
+        );
+
+        if (currentSubCategory && currentSubCategory?.duas?.length > 0) {
+          setSelectedExpandingSubCategory(currentSubCategory.id);
+        }
       }
     }
-  }, [categorySlug, catelogCategories]);
+  }, [categorySlug, catelogCategories, selectedExpandingSubCategory]);
 
   return (
     <>
@@ -751,14 +762,37 @@ function CategoryPage() {
 
                       {catelogCategory?.subcategories.map((subCategory) => (
                         <div key={subCategory?.id}>
-                          <div onClick={() => {}}>
+                          <div
+                            onClick={() => {
+                              setSelectedExpandingSubCategory(subCategory?.id);
+                            }}
+                          >
                             {/*  */}
                             <div></div>
 
-                            <div>{subCategory?.name}</div>
-
-                            <div>{subCategory?.sub_subcategories?.length}</div>
+                            <div>
+                              {subCategory?.name} (
+                              {subCategory?.sub_subcategories?.length})
+                            </div>
                           </div>
+
+                          {/* Level 3 - Sub sub categories */}
+                          {selectedExpandingSubCategory === subCategory?.id && (
+                            <div className="">
+                              {/* Dashed line */}
+                              <div></div>
+                              {subCategory?.sub_subcategories.map(
+                                (subSubCategory) => (
+                                  <div
+                                    key={subSubCategory?.id}
+                                    className="flex items-start gap-3 py-1"
+                                  >
+                                    <p>{subSubCategory?.name}</p>
+                                  </div>
+                                ),
+                              )}
+                            </div>
+                          )}
                         </div>
                       ))}
                     </div>
