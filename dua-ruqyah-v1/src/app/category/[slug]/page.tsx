@@ -2,6 +2,7 @@
 
 import { Poppins } from "next/font/google";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const poppinsFont = Poppins({
@@ -419,6 +420,8 @@ function CategoryPage() {
     ),
   };
 
+  const router = useRouter();
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const [arabicFontSize, setArabicFontSize] = useState<number>(24);
   const [translationFontSize, setTranslationFontSize] = useState<number>(18);
@@ -643,7 +646,12 @@ function CategoryPage() {
                 <div key={catelogCategory?.id} className="">
                   {/* Level 1 */}
                   <div className=" py-3 px-4 hover:bg-gray-50/30 rounded-lg">
-                    <div className="flex items-center gap-[18px] cursor-pointer flex-1">
+                    <div
+                      className="flex items-center gap-[18px] cursor-pointer flex-1"
+                      onClick={(e) => {
+                        router.push(`/category/${catelogCategory?.slug}`);
+                      }}
+                    >
                       <div className="">
                         {renderIcon(catelogCategory?.icon_path)}
                       </div>
