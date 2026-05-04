@@ -635,21 +635,25 @@ function CategoryPage() {
           {/* Category Catelog Section - Desktop Only*/}
           <div className="">
             {/* Search Bar */}
-            <div>Search Bar</div>
+            <div className="border-b p-4 border-[#E1EBE1]">Search Bar</div>
 
             {/* Category */}
-            <div className="">
+            <div className="px-4  py-2 space-y-2">
               {catelogCategories.map((catelogCategory) => (
                 <div key={catelogCategory?.id} className="">
                   {/* Level 1 */}
-                  <div>
-                    <div>
-                      <div>{renderIcon(catelogCategory?.icon_path)}</div>
+                  <div className=" py-3 px-4 hover:bg-gray-50/30 rounded-lg">
+                    <div className="flex items-center gap-[18px] cursor-pointer flex-1">
+                      <div className="">
+                        {renderIcon(catelogCategory?.icon_path)}
+                      </div>
 
                       <div>
-                        <h3>{catelogCategory?.name}</h3>
+                        <h3 className="text-[#282E29] text-[14px] font-medium">
+                          {catelogCategory?.name}
+                        </h3>
 
-                        <div>
+                        <div className="text-[#7C827D] text-[12px]">
                           <span>
                             {catelogCategory?.subcategories?.length}{" "}
                             Subcategories
