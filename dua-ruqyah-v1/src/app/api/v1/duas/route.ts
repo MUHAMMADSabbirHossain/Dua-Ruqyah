@@ -37,33 +37,16 @@ export async function GET(req: Request) {
 
     // if subcategory slug is present, then fetch data based on subcategory slug else fetch data based on category slug
     if (sanitizedSubCategorySlug && sanitizedSubCategorySlug.length > 0) {
+      // Query based on subcategory slug only
       sqlQuery += ` AND subcategories.slug = ? `;
       params.push(sanitizedSubCategorySlug);
     } else if (sanitizedCategorySlug && sanitizedCategorySlug.length > 0) {
+      // Query based on category slug only
       sqlQuery += ` AND categories.slug = ? `;
       params.push(sanitizedCategorySlug);
     } else {
-      return NextResponse.json(
-        {
-          status: 400,
-          success: false,
-          message:
-            "Bad request. Category slug or subcategory slug is required.",
-          // error:
-          //   process.env.NODE_ENV === "development"
-          //     ? Object.getOwnPropertyNames(error).reduce(
-          //         (acc: Record<string, unknown>, key: string) => {
-          //           acc[key] = error[key];
-          //           return acc;
-          //         },
-          //         {} as Record<string, unknown>,
-          //       )
-          //     : undefined,
-          error: "Bad request. Category slug or subcategory slug is required.",
-          data: null,
-        },
-        { status: 400 },
-      );
+      // Query all duas
+      sqlQuery += ` AND 1 = 1 `;
     }
 
     // execute the query
