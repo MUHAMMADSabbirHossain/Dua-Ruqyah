@@ -469,6 +469,7 @@ function CategoryPage() {
     useState<number>(121);
   const [selectedExpandingSubCategory, setSelectedExpandingSubCategory] =
     useState<number>(160);
+  const [subCategorySlug, setSubCategorySlug] = useState<string>("");
 
   const handleToggleMobileMenu = (open?: boolean) => {
     setIsMobileMenuOpen((prev) => (open === undefined ? !prev : open));
@@ -493,6 +494,18 @@ function CategoryPage() {
           data?.data?.length > 0
         ) {
           setCatelogCategories(data?.data || []);
+
+          // Find the category by slug and set the subcategory slug to the first subcategory
+          const currentCategory = data?.data.find(
+            (item: any) => item?.slug === categorySlug,
+          );
+          if (currentCategory && currentCategory?.subcategories?.length > 0) {
+            setSubCategorySlug(currentCategory.subcategories[0].slug);
+            setSelectedExpandingSubCategory(
+              currentCategory.subcategories[0].id,
+            );
+            setSelectedExpandingCategory(currentCategory.id);
+          }
         }
       } catch (err) {
         const error = err as Error;
@@ -531,10 +544,40 @@ function CategoryPage() {
 
         if (currentSubCategory && currentSubCategory?.duas?.length > 0) {
           setSelectedExpandingSubCategory(currentSubCategory.id);
+          setSubCategorySlug(currentSubCategory?.slug);
         }
       }
     }
-  }, [categorySlug, catelogCategories, selectedExpandingCategory]);
+
+    (async () => {
+      try {
+        const apiUrl = `/api/v1/duas?${
+          subCategorySlug
+            ? "sub_category_slug=" + subCategorySlug
+            : "category_slug=" + categorySlug
+        }`;
+
+        const result = await fetch(apiUrl);
+        const data = await result.json();
+        console.log(data?.count);
+
+        if (
+          data?.status === 200 &&
+          data?.success === true &&
+          data?.data?.length > 0
+        ) {
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, [
+    categorySlug,
+    catelogCategories,
+    selectedExpandingCategory,
+    selectedExpandingSubCategory,
+    subCategorySlug,
+  ]);
 
   return (
     <>
@@ -783,6 +826,7 @@ function CategoryPage() {
                           <div
                             onClick={() => {
                               setSelectedExpandingSubCategory(subCategory?.id);
+                              setSubCategorySlug(subCategory?.slug);
                             }}
                           >
                             {/*  */}
