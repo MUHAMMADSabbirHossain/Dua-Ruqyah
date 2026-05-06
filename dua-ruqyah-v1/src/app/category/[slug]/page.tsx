@@ -470,6 +470,7 @@ function CategoryPage() {
   const [selectedExpandingSubCategory, setSelectedExpandingSubCategory] =
     useState<number>(160);
   const [subCategorySlug, setSubCategorySlug] = useState<string>("");
+  const [duaContent, setDuaContent] = useState<any>([]);
 
   const handleToggleMobileMenu = (open?: boolean) => {
     setIsMobileMenuOpen((prev) => (open === undefined ? !prev : open));
@@ -566,6 +567,7 @@ function CategoryPage() {
           data?.success === true &&
           data?.data?.length > 0
         ) {
+          setDuaContent(data?.data);
         }
       } catch (error) {
         console.log(error);
@@ -864,6 +866,71 @@ function CategoryPage() {
                   )}
                 </div>
               ))}
+            </div>
+          </div>
+
+          {/* Dua Content */}
+          <div>
+            <div>
+              <div>
+                <div>
+                  {/* Loading */}
+
+                  {/* Error Message */}
+
+                  <div>
+                    {duaContent.length > 0 ? (
+                      <div>
+                        {duaContent.map((dua, idx) => (
+                          <div key={`${dua?.id}-${dua?.subcategory_slug}`}>
+                            <div>
+                              <div>
+                                <div></div>
+                                <h3>{dua?.title}</h3>
+                              </div>
+
+                              {dua?.instruction && <p>{dua?.instruction}</p>}
+
+                              <div>
+                                <p>{dua?.arabic_text}</p>
+                              </div>
+
+                              {(dua?.transliteration || dua?.translation) && (
+                                <div>
+                                  {dua?.transliteration && (
+                                    <p>{dua?.transliteration}</p>
+                                  )}
+
+                                  {dua?.translation && (
+                                    <div>
+                                      <p>Translation:</p>
+                                      <p>{dua?.translation}</p>
+                                    </div>
+                                  )}
+                                </div>
+                              )}
+                            </div>
+
+                            <div>
+                              <div>
+                                <div>
+                                  <p>Reference</p>
+                                  <p>{dua?.reference}</p>
+                                </div>
+                              </div>
+                              <div></div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <div>
+                        <div>No dua found for this category</div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
