@@ -519,10 +519,13 @@ function CategoryPage() {
       if (currentCategory && currentCategory?.subcategories?.length > 0) {
         setSelectedExpandingCategory(currentCategory.id);
 
-        // Level 2 - Expand current sub category
+        // Level 2 - Expand first sub category if it has sub_subcategories
         const currentSubCategory = currentCategory?.subcategories?.find(
           (subCategory) => {
-            return subCategory?.id === selectedExpandingSubCategory;
+            return (
+              subCategory?.sub_subcategories &&
+              subCategory?.sub_subcategories?.length > 0
+            );
           },
         );
 
@@ -531,7 +534,7 @@ function CategoryPage() {
         }
       }
     }
-  }, [categorySlug, catelogCategories, selectedExpandingSubCategory]);
+  }, [categorySlug, catelogCategories, selectedExpandingCategory]);
 
   return (
     <>
