@@ -560,7 +560,7 @@ function CategoryPage() {
 
         const result = await fetch(apiUrl);
         const data = await result.json();
-        console.log(data?.count);
+        // console.log(data?.count);
 
         if (
           data?.status === 200 &&
@@ -871,7 +871,7 @@ function CategoryPage() {
 
           {/* Dua Content */}
           <div>
-            <div>
+            <div className="pb-20">
               <div>
                 <div>
                   {/* Loading */}
@@ -882,7 +882,10 @@ function CategoryPage() {
                     {duaContent.length > 0 ? (
                       <div>
                         {duaContent.map((dua, idx) => (
-                          <div key={`${dua?.id}-${dua?.subcategory_slug}`}>
+                          <div
+                            key={`${dua?.id}-${dua?.subcategory_slug}`}
+                            className="py-4 border-b border-[#E1EBE1]"
+                          >
                             <div>
                               <div>
                                 <div></div>
