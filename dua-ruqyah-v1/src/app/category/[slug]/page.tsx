@@ -1079,34 +1079,29 @@ function CategoryPage() {
                                 </div>
                               </div>
                               <div>
-                                <div className="">
+                                <div className="flex items-center gap-2 gap-4">
                                   {/* Copy */}
-                                  <button>
-                                    <div></div>
+                                  <button className="" title="Copy dua text">
                                     {svgIcons?.playIcon}
                                   </button>
 
                                   {/* Bookmark */}
-                                  <button>
-                                    <div></div>
+                                  <button className="" title="Bookmark">
                                     {svgIcons?.bookmarkIcon}
                                   </button>
 
                                   {/* Play */}
-                                  <button>
-                                    <div></div>
+                                  <button className="" title="Play audio">
                                     {svgIcons?.audioPlayIcon}
                                   </button>
 
                                   {/* Share - Hidden on mobile */}
-                                  <button>
-                                    <div></div>
+                                  <button className="" title="Share">
                                     {svgIcons?.shareIcon}
                                   </button>
 
                                   {/* More/Report - Hidden on mobile */}
-                                  <button>
-                                    <div></div>
+                                  <button className="" title="More">
                                     {svgIcons?.moreReportIcon}
                                   </button>
                                 </div>
