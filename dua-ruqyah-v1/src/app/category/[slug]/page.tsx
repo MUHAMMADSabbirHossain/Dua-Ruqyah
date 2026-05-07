@@ -430,6 +430,140 @@ const svgIcons = {
       />
     </svg>
   ),
+  audioPlayIcon: (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="lg:w-5 lg:h-5 relative z-10 transition-all duration-300"
+    >
+      <path
+        d="M3.33337 10V7.03335C3.33337 3.35001 5.94171 1.84168 9.13337 3.68335L11.7084 5.16668L14.2834 6.65001C17.475 8.49168 17.475 11.5083 14.2834 13.35L11.7084 14.8333L9.13337 16.3167C5.94171 18.1583 3.33337 16.65 3.33337 12.9667V10Z"
+        stroke="#709484"
+        strokeWidth="1.5"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="group-hover:stroke-[#1FA45B] group-active:stroke-[#1FA45B] transition-colors duration-300"
+      />
+    </svg>
+  ),
+  shareIcon: (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="lg:w-5 lg:h-5 relative z-10 transition-all duration-300"
+    >
+      <path
+        d="M6.66663 1.66669V4.16669"
+        stroke="#709484"
+        strokeWidth="1.5"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="group-hover:stroke-[#1FA45B] group-active:stroke-[#1FA45B] transition-colors duration-300"
+      />
+      <path
+        d="M13.3334 1.66669V4.16669"
+        stroke="#709484"
+        strokeWidth="1.5"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="group-hover:stroke-[#1FA45B] group-active:stroke-[#1FA45B] transition-colors duration-300"
+      />
+      <path
+        d="M2.91663 7.57501H17.0833"
+        stroke="#709484"
+        strokeWidth="1.5"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="group-hover:stroke-[#1FA45B] group-active:stroke-[#1FA45B] transition-colors duration-300"
+      />
+      <path
+        d="M17.5 7.08335V14.1667C17.5 16.6667 16.25 18.3334 13.3333 18.3334H6.66667C3.75 18.3334 2.5 16.6667 2.5 14.1667V7.08335C2.5 4.58335 3.75 2.91669 6.66667 2.91669H13.3333C16.25 2.91669 17.5 4.58335 17.5 7.08335Z"
+        stroke="#709484"
+        strokeWidth="1.5"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="group-hover:stroke-[#1FA45B] group-active:stroke-[#1FA45B] transition-colors duration-300"
+      />
+      <path
+        d="M13.079 11.4167H13.0864"
+        stroke="#709484"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="group-hover:stroke-[#1FA45B] group-active:stroke-[#1FA45B] transition-colors duration-300"
+      />
+      <path
+        d="M9.9962 11.4167H10.0037"
+        stroke="#709484"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="group-hover:stroke-[#1FA45B] group-active:stroke-[#1FA45B] transition-colors duration-300"
+      />
+      <path
+        d="M6.91197 11.4167H6.91945"
+        stroke="#709484"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="group-hover:stroke-[#1FA45B] group-active:stroke-[#1FA45B] transition-colors duration-300"
+      />
+      <path
+        d="M6.91197 13.9167H6.91945"
+        stroke="#709484"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="group-hover:stroke-[#1FA45B] group-active:stroke-[#1FA45B] transition-colors duration-300"
+      />
+    </svg>
+  ),
+  moreReportIcon: (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="lg:w-5 lg:h-5 relative z-10 transition-all duration-300"
+    >
+      <circle
+        cx="10"
+        cy="10"
+        r="1.67"
+        stroke="#709484"
+        strokeWidth="1.5"
+        className="group-hover:stroke-[#1FA45B] group-active:stroke-[#1FA45B] transition-colors duration-300"
+      />
+      <circle
+        cx="10"
+        cy="4.17"
+        r="1.67"
+        stroke="#709484"
+        strokeWidth="1.5"
+        className="group-hover:stroke-[#1FA45B] group-active:stroke-[#1FA45B] transition-colors duration-300"
+      />
+      <circle
+        cx="10"
+        cy="15.83"
+        r="1.67"
+        stroke="#709484"
+        strokeWidth="1.5"
+        className="group-hover:stroke-[#1FA45B] group-active:stroke-[#1FA45B] transition-colors duration-300"
+      />
+    </svg>
+  ),
 };
 
 function renderIcon(iconPath?: string | null) {
@@ -944,7 +1078,39 @@ function CategoryPage() {
                                   </span>
                                 </div>
                               </div>
-                              <div></div>
+                              <div>
+                                <div className="">
+                                  {/* Copy */}
+                                  <button>
+                                    <div></div>
+                                    {svgIcons?.playIcon}
+                                  </button>
+
+                                  {/* Bookmark */}
+                                  <button>
+                                    <div></div>
+                                    {svgIcons?.bookmarkIcon}
+                                  </button>
+
+                                  {/* Play */}
+                                  <button>
+                                    <div></div>
+                                    {svgIcons?.audioPlayIcon}
+                                  </button>
+
+                                  {/* Share - Hidden on mobile */}
+                                  <button>
+                                    <div></div>
+                                    {svgIcons?.shareIcon}
+                                  </button>
+
+                                  {/* More/Report - Hidden on mobile */}
+                                  <button>
+                                    <div></div>
+                                    {svgIcons?.moreReportIcon}
+                                  </button>
+                                </div>
+                              </div>
                             </div>
                           </div>
                         ))}
