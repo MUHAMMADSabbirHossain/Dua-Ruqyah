@@ -72,7 +72,19 @@ export async function GET(req: NextRequest) {
                         'slug', sub_subcategories.slug,
                         'icon_path', sub_subcategories.icon_path,
                         'sort_order', sub_subcategories.sort_order,
-                        'is_active', sub_subcategories.is_active
+                        'is_active', sub_subcategories.is_active,
+                        'dua', (
+                          SELECT JSON_OBJECT(
+                            'id', duas.id,
+                            'title', duas.title,
+                            'translation', duas.translation
+                          )
+                          FROM duas
+                          WHERE INSTR(
+                            sub_subcategories.name,
+                            TRIM(SUBSTR(duas.title, INSTR(duas.title, '.') + 1))
+                          ) > 0
+                        )
                       )
                     )
                     FROM sub_subcategories
@@ -84,7 +96,8 @@ export async function GET(req: NextRequest) {
               WHERE subcategories.category_id = categories.id
             ) AS subcategories
           FROM categories
-          ORDER BY categories.sort_order ASC, categories.id ASC
+          ORDER BY categories.sort_order ASC, 
+            categories.id ASC;
         `,
       )
       .all() as RawCategoryRow[];
@@ -100,6 +113,23 @@ export async function GET(req: NextRequest) {
       is_active: Boolean(row.is_active), // Convert 0/1 to boolean
       subcategories: row.subcategories ? JSON.parse(row.subcategories) : [],
     }));
+
+    // ================== Server working approach start ==================
+    // const duas = await db.prepare("SELECT * FROM duas").all();
+
+    // parseResult.forEach((c) => {
+    //   c?.subcategories?.forEach((sc) => {
+    //     sc?.sub_subcategories?.forEach((ssc) => {
+    //       const d = duas.find((d) => {
+    //         const dName = d?.title?.replace(/^\d+\.\s*/, "");
+    //         return ssc?.name?.includes(dName);
+    //       });
+    //       ssc.dua = d;
+    //     });
+    //   });
+    // });
+
+    // ================== Server working approach end ==================
 
     return NextResponse.json(
       {
