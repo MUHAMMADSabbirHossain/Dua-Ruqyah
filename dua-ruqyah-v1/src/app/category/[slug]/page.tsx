@@ -1067,8 +1067,10 @@ function CategoryPage() {
                               )}
                             </div>
 
-                            <div className="flex flex-col justify-between items-start gap-4">
-                              <div className="px-3 py-2">
+                            {/* Reference and Action Bar */}
+                            <div className="flex flex-col justify-between items-start gap-4 lg:flex-row lg:items-center lg:gap-9">
+                              {/* Reference */}
+                              <div className="px-3 py-2 lg:px-4">
                                 <div className="flex flex-col ">
                                   <span className="text-[#7C827D] text-xs">
                                     Reference
@@ -1078,8 +1080,10 @@ function CategoryPage() {
                                   </span>
                                 </div>
                               </div>
+
+                              {/* Actions Bar */}
                               <div>
-                                <div className="flex items-center gap-2 gap-4">
+                                <div className="flex items-center gap-2 lg:gap-4">
                                   {/* Copy */}
                                   <button className="" title="Copy dua text">
                                     {svgIcons?.playIcon}
