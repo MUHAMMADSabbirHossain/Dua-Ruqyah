@@ -933,11 +933,15 @@ function CategoryPage() {
                               )}
                             </div>
 
-                            <div>
-                              <div>
-                                <div>
-                                  <p>Reference</p>
-                                  <p>{dua?.reference}</p>
+                            <div className="flex flex-col justify-between items-start gap-4">
+                              <div className="px-3 py-2">
+                                <div className="flex flex-col ">
+                                  <span className="text-[#7C827D] text-xs">
+                                    Reference
+                                  </span>
+                                  <span className="text-[#282E29] text-xs">
+                                    {dua?.reference}
+                                  </span>
                                 </div>
                               </div>
                               <div></div>
