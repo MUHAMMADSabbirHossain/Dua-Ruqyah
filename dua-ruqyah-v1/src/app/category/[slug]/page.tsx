@@ -899,121 +899,126 @@ function CategoryPage() {
         )}
 
         <div className="flex">
-          {/* Category Catelog Section - Desktop Only*/}
-          <div className="w-[345px] h-full">
-            {/* Search Bar */}
-            <div className="border-b p-4 border-[#E1EBE1]">Search Bar</div>
+          <div className="hidden lg:block">
+            {/* Category Catelog Section - Desktop Only*/}
+            <div className="w-[345px] h-full">
+              {/* Search Bar */}
+              <div className="border-b p-4 border-[#E1EBE1]">Search Bar</div>
 
-            {/* Category */}
-            <div className="px-4 py-2 space-y-2">
-              {/* Loading - if categories api is loading. */}
-              {loading && (
-                <div className="text-sm text-[#7C827D] px-3 py-2 flex items-center">
-                  {svgIcons?.loadingIcon}
-                  Loading Categories...
-                </div>
-              )}
-
-              {/* Error Message - If categories api is failed.*/}
-              {error.status === true && (
-                <div className="text-sm text-red-600 px-3 py-2">
-                  {error.message || "Failed to load categories"}
-                </div>
-              )}
-
-              {/* Categories Catalog - If load successfully */}
-              {catelogCategories.map((catelogCategory) => (
-                <div key={catelogCategory?.id} className="">
-                  {/* Level 1 */}
-                  <div className=" py-3 px-4 hover:bg-gray-50/30 rounded-lg">
-                    <div
-                      className="flex items-center gap-[18px] cursor-pointer flex-1"
-                      onClick={(e) => {
-                        router.push(`/category/${catelogCategory?.slug}`);
-                      }}
-                    >
-                      <div className="">
-                        {renderIcon(catelogCategory?.icon_path)}
-                      </div>
-
-                      <div>
-                        <h3 className="text-[#282E29] text-[14px] font-medium">
-                          {catelogCategory?.name}
-                        </h3>
-
-                        <div className="text-[#7C827D] text-[12px]">
-                          <span>
-                            {catelogCategory?.subcategories?.length}{" "}
-                            Subcategories
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Expand/Collapse Button */}
+              {/* Category */}
+              <div className="px-4 py-2 space-y-2">
+                {/* Loading - if categories api is loading. */}
+                {loading && (
+                  <div className="text-sm text-[#7C827D] px-3 py-2 flex items-center">
+                    {svgIcons?.loadingIcon}
+                    Loading Categories...
                   </div>
+                )}
 
-                  {/* Level 2 - Sub categories */}
-                  {selectedExpandingCategory === catelogCategory?.id && (
-                    <div>
-                      {/*  */}
-                      <div></div>
+                {/* Error Message - If categories api is failed.*/}
+                {error.status === true && (
+                  <div className="text-sm text-red-600 px-3 py-2">
+                    {error.message || "Failed to load categories"}
+                  </div>
+                )}
 
-                      {catelogCategory?.subcategories.map((subCategory) => (
-                        <div key={subCategory?.id}>
-                          <div
-                            onClick={() => {
-                              setSelectedExpandingSubCategory(subCategory?.id);
-                              setSubCategorySlug(subCategory?.slug);
-                            }}
-                          >
-                            {/*  */}
-                            <div></div>
-
-                            <div>
-                              {subCategory?.name} (
-                              {subCategory?.sub_subcategories?.length})
-                            </div>
-                          </div>
-
-                          {/* Level 3 - Sub sub categories */}
-                          {selectedExpandingSubCategory === subCategory?.id && (
-                            <div className="">
-                              {/* Dashed line */}
-                              <div></div>
-                              {subCategory?.sub_subcategories.map(
-                                (subSubCategory) => (
-                                  <div
-                                    key={subSubCategory?.id}
-                                    onClick={() => {
-                                      console.log(
-                                        subSubCategory?.dua?.id,
-                                        duaRef,
-                                      );
-
-                                      window.scrollTo({
-                                        top: duaRef.current[
-                                          subSubCategory?.dua?.id
-                                        ]?.offsetTop,
-                                        behavior: "smooth",
-                                      });
-                                    }}
-                                    className="flex items-start gap-3 py-1"
-                                  >
-                                    {/* To right arrow Icon */}
-                                    <div>{svgIcons?.catelogToRightIcon}</div>
-                                    <p>{subSubCategory?.name}</p>
-                                  </div>
-                                ),
-                              )}
-                            </div>
-                          )}
+                {/* Categories Catalog - If load successfully */}
+                {catelogCategories.map((catelogCategory) => (
+                  <div key={catelogCategory?.id} className="">
+                    {/* Level 1 */}
+                    <div className=" py-3 px-4 hover:bg-gray-50/30 rounded-lg">
+                      <div
+                        className="flex items-center gap-[18px] cursor-pointer flex-1"
+                        onClick={(e) => {
+                          router.push(`/category/${catelogCategory?.slug}`);
+                        }}
+                      >
+                        <div className="">
+                          {renderIcon(catelogCategory?.icon_path)}
                         </div>
-                      ))}
+
+                        <div>
+                          <h3 className="text-[#282E29] text-[14px] font-medium">
+                            {catelogCategory?.name}
+                          </h3>
+
+                          <div className="text-[#7C827D] text-[12px]">
+                            <span>
+                              {catelogCategory?.subcategories?.length}{" "}
+                              Subcategories
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Expand/Collapse Button */}
                     </div>
-                  )}
-                </div>
-              ))}
+
+                    {/* Level 2 - Sub categories */}
+                    {selectedExpandingCategory === catelogCategory?.id && (
+                      <div>
+                        {/*  */}
+                        <div></div>
+
+                        {catelogCategory?.subcategories.map((subCategory) => (
+                          <div key={subCategory?.id}>
+                            <div
+                              onClick={() => {
+                                setSelectedExpandingSubCategory(
+                                  subCategory?.id,
+                                );
+                                setSubCategorySlug(subCategory?.slug);
+                              }}
+                            >
+                              {/*  */}
+                              <div></div>
+
+                              <div>
+                                {subCategory?.name} (
+                                {subCategory?.sub_subcategories?.length})
+                              </div>
+                            </div>
+
+                            {/* Level 3 - Sub sub categories */}
+                            {selectedExpandingSubCategory ===
+                              subCategory?.id && (
+                              <div className="">
+                                {/* Dashed line */}
+                                <div></div>
+                                {subCategory?.sub_subcategories.map(
+                                  (subSubCategory) => (
+                                    <div
+                                      key={subSubCategory?.id}
+                                      onClick={() => {
+                                        console.log(
+                                          subSubCategory?.dua?.id,
+                                          duaRef,
+                                        );
+
+                                        window.scrollTo({
+                                          top: duaRef.current[
+                                            subSubCategory?.dua?.id
+                                          ]?.offsetTop,
+                                          behavior: "smooth",
+                                        });
+                                      }}
+                                      className="flex items-start gap-3 py-1"
+                                    >
+                                      {/* To right arrow Icon */}
+                                      <div>{svgIcons?.catelogToRightIcon}</div>
+                                      <p>{subSubCategory?.name}</p>
+                                    </div>
+                                  ),
+                                )}
+                              </div>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
