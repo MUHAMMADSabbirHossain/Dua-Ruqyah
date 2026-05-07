@@ -3,7 +3,7 @@
 import { Poppins } from "next/font/google";
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const poppinsFont = Poppins({
   subsets: ["latin"],
@@ -472,6 +472,8 @@ function CategoryPage() {
   const [subCategorySlug, setSubCategorySlug] = useState<string>("");
   const [duaContent, setDuaContent] = useState<any>([]);
 
+  const duaRef = useRef<{ [key: string]: HTMLDivElement | null }>({});
+
   const handleToggleMobileMenu = (open?: boolean) => {
     setIsMobileMenuOpen((prev) => (open === undefined ? !prev : open));
   };
@@ -849,11 +851,23 @@ function CategoryPage() {
                                 (subSubCategory) => (
                                   <div
                                     key={subSubCategory?.id}
+                                    onClick={() => {
+                                      console.log(
+                                        subSubCategory?.dua?.id,
+                                        duaRef,
+                                      );
+
+                                      window.scrollTo({
+                                        top: duaRef.current[
+                                          subSubCategory?.dua?.id
+                                        ]?.offsetTop,
+                                        behavior: "smooth",
+                                      });
+                                    }}
                                     className="flex items-start gap-3 py-1"
                                   >
                                     {/* To right arrow Icon */}
                                     <div>{svgIcons?.catelogToRightIcon}</div>
-
                                     <p>{subSubCategory?.name}</p>
                                   </div>
                                 ),
@@ -881,9 +895,14 @@ function CategoryPage() {
                   <div>
                     {duaContent.length > 0 ? (
                       <div>
-                        {duaContent.map((dua, idx) => (
+                        {duaContent.map((dua) => (
                           <div
                             key={`${dua?.id}-${dua?.subcategory_slug}`}
+                            ref={(e) => {
+                              if (e) {
+                                duaRef.current[dua?.id] = e;
+                              }
+                            }}
                             className="py-4 border-b border-[#E1EBE1]"
                           >
                             <div>
