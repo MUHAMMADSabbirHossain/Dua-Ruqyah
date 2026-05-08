@@ -1050,7 +1050,7 @@ function CategoryPage() {
             className="md:px-2 lg:px-0"
             style={{ backgroundColor: "#F9FFFB" }}
           >
-            <div className="pb-20 bg-[#F7FFFB]">
+            <div className="pb-20 lg:pb-0 bg-[#F7FFFB]">
               {/* Content */}
               <div className="bg-[#F9FFFB]">
                 {/* Loading */}
