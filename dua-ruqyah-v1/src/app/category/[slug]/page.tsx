@@ -1056,7 +1056,7 @@ function CategoryPage() {
 
                   <div>
                     {duaContent.length > 0 ? (
-                      <div>
+                      <div className="px-2 sm:px-4 lg:px-[68px]">
                         {duaContent.map((dua) => (
                           <div
                             key={`${dua?.id}-${dua?.subcategory_slug}`}
@@ -1065,7 +1065,9 @@ function CategoryPage() {
                                 duaRef.current[dua?.id] = e;
                               }
                             }}
-                            className="py-4 border-b border-[#E1EBE1]"
+                            className="py-4 border-b border-[#E1EBE1] px-2 flex flex-col gap-6 scroll-mt-20
+                            sm:py-6 sm:gap-8
+                            lg:py-[30px] lg:pl-[18px] lg:pr-0 lg:gap-[50px]"
                           >
                             <div>
                               {/* Dua Title and Icon */}
