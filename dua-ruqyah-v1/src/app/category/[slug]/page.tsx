@@ -1090,7 +1090,7 @@ function CategoryPage() {
                           {/* Arabic Text + Transliteration + Translation */}
                           <div className="flex flex-col gap-3 sm:gap-4 lg:gap-6">
                             <p
-                              className="text-lg leading-7 text-right sm:text-xl sm:leading-8 lg:text-[28px] lg:leading-[49px] wrap-break-word"
+                              className="text-lg leading-7 text-right text-[#282E29] sm:text-xl sm:leading-8 lg:text-[28px] lg:leading-[49px] wrap-break-word"
                               dir="rtl"
                             >
                               {dua?.arabic_text}
