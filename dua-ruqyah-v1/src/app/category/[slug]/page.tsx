@@ -924,11 +924,13 @@ function CategoryPage() {
         <div className="flex">
           <div className="hidden lg:block">
             {/* Category Catelog Section - Desktop Only*/}
-            <div className="w-[345px] h-full">
+            <div className="w-[345px] h-full bg-[#F7FFFB] border-[#E1EBE1]">
               {/* Search Bar */}
-              <div className="border-b p-4 border-[#E1EBE1]">Search Bar</div>
+              <div className="border-b p-4 border-[#E1EBE1] text-black">
+                Search Bar
+              </div>
 
-              {/* Category */}
+              {/* Category - Category */}
               <div className="px-4 py-2 space-y-2">
                 {/* Loading - if categories api is loading. */}
                 {loading && (
@@ -979,9 +981,9 @@ function CategoryPage() {
 
                     {/* Level 2 - Sub categories */}
                     {selectedExpandingCategory === catelogCategory?.id && (
-                      <div>
-                        {/*  */}
-                        <div></div>
+                      <div className="ml-[26px] relative">
+                        {/* Dashed border */}
+                        <div className="absolute mt-[12px] left-0 top-0 bottom-0 w-px border-l-2 border-dashed border-[#C5D1C7]"></div>
 
                         {catelogCategory?.subcategories.map((subCategory) => (
                           <div key={subCategory?.id}>
@@ -992,22 +994,20 @@ function CategoryPage() {
                                 );
                                 setSubCategorySlug(subCategory?.slug);
                               }}
+                              className="relative pl-6 py-2 cursor-pointer"
                             >
-                              {/*  */}
-                              <div></div>
+                              {/* Connection dash */}
+                              <div className="absolute top-1/2 left-0 w-4 h-px border-t-2 border-dashed border-[#E1EBE1]"></div>
 
-                              <div>
-                                {subCategory?.name} (
-                                {subCategory?.sub_subcategories?.length})
+                              <div className="text-[14px] font-medium text-[#282E29] leading-relaxed">
+                                {subCategory?.name}
                               </div>
                             </div>
 
                             {/* Level 3 - Sub sub categories */}
                             {selectedExpandingSubCategory ===
                               subCategory?.id && (
-                              <div className="">
-                                {/* Dashed line */}
-                                <div></div>
+                              <div className="ml-4 pl-6 relative">
                                 {subCategory?.sub_subcategories.map(
                                   (subSubCategory) => (
                                     <div
@@ -1028,8 +1028,13 @@ function CategoryPage() {
                                       className="flex items-start gap-3 py-1"
                                     >
                                       {/* To right arrow Icon */}
-                                      <div>{svgIcons?.catelogToRightIcon}</div>
-                                      <p>{subSubCategory?.name}</p>
+                                      <div className="mt-1">
+                                        {svgIcons?.catelogToRightIcon}
+                                      </div>
+
+                                      <p className="text-sm pt-0.5 text-[#252F29]">
+                                        {subSubCategory?.name}
+                                      </p>
                                     </div>
                                   ),
                                 )}
