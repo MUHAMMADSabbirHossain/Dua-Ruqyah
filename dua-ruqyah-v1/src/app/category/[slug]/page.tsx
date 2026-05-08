@@ -741,7 +741,7 @@ function CategoryPage() {
   ]);
 
   return (
-    <>
+    <div className="bg-[#FBFFFB] min-h-screen">
       {/* Responsive Sidebar - Desktop: left sidebar, Mobile: bottom bar */}
       <div className="fixed bottom-0 w-full flex items-center justify-evenly bg-[#EEF6EB] border-[#E1EBE1] left-0 border-t lg:w-[68px] lg:top-0 lg:flex-col lg:border-r">
         {/* Dua Icon - Desktop only */}
@@ -798,7 +798,7 @@ function CategoryPage() {
         </div>
       </div>
 
-      <main className="lg:ml-[68px]">
+      <main className="pb-16 lg:pb-0 lg:ml-[68px]">
         <header className="bg-[#FBFFFB]  h-[64px] px-4 flex items-center justify-between">
           {/* Hamburger Menu - Mobile only */}
           <button
@@ -1360,7 +1360,7 @@ function CategoryPage() {
           </div>
         </div>
       </main>
-    </>
+    </div>
   );
 }
 
