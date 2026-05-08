@@ -1076,26 +1076,46 @@ function CategoryPage() {
                                 </h3>
                               </div>
 
-                              {dua?.instruction && <p>{dua?.instruction}</p>}
-
-                              <div>
-                                <p>{dua?.arabic_text}</p>
-                              </div>
-
-                              {(dua?.transliteration || dua?.translation) && (
-                                <div>
-                                  {dua?.transliteration && (
-                                    <p>{dua?.transliteration}</p>
-                                  )}
-
-                                  {dua?.translation && (
-                                    <div>
-                                      <p>Translation:</p>
-                                      <p>{dua?.translation}</p>
-                                    </div>
-                                  )}
-                                </div>
+                              {/* Instruction - optional */}
+                              {dua?.instruction && (
+                                <p className="text-xs leading-5 text-[#282E29] sm:text-sm sm:leading-6 lg:text-base lg:leading-8">
+                                  {dua?.instruction}
+                                </p>
                               )}
+
+                              {/* Arabic Text + Transliteration + Translation */}
+                              <div className="flex flex-col gap-3 sm:gap-4 lg:gap-6">
+                                <p
+                                  className="text-lg leading-7 text-right sm:text-xl sm:leading-8 lg:text-[28px] lg:leading-[49px] wrap-break-word"
+                                  dir="rtl"
+                                >
+                                  {dua?.arabic_text}
+                                </p>
+
+                                {(dua?.transliteration || dua?.translation) && (
+                                  <div className="flex flex-col gap-3 sm:gap-4 lg:gap-6">
+                                    {dua?.transliteration && (
+                                      <p className="text-xs leading-5 font-normal text-[#7C827D] sm:leading-6 sm:text-sm lg:text-base lg:leading-8 ">
+                                        {dua?.transliteration}
+                                      </p>
+                                    )}
+
+                                    {dua?.translation && (
+                                      <div className="flex  flex-col gap-1 sm:gap-2">
+                                        <p className="text-xs text-[#282E29] leading-5 font-semibold  sm:text-sm lg:text-base lg:leading-[26px]">
+                                          Translation:
+                                        </p>
+                                        <p
+                                          className="text-xs font-normal leading-5 text-black sm:text-sm 
+                                        sm:leading-6 lg:text-base lg:leading-[26px]"
+                                        >
+                                          {dua?.translation}
+                                        </p>
+                                      </div>
+                                    )}
+                                  </div>
+                                )}
+                              </div>
                             </div>
 
                             {/* Reference and Action Bar */}
