@@ -921,8 +921,8 @@ function CategoryPage() {
           />
         )}
 
-        <div className="flex">
-          <div className="hidden lg:block">
+        <div className="flex h-[calc(100vh-64px-64px)] lg:h-[calc(100vh-64px)]">
+          <div className="hidden lg:block overflow-y-auto">
             {/* Category Catelog Section - Desktop Only*/}
             <div className="w-[345px] h-full bg-[#F7FFFB] border-[#E1EBE1]">
               {/* Search Bar */}
@@ -1013,16 +1013,11 @@ function CategoryPage() {
                                     <div
                                       key={subSubCategory?.id}
                                       onClick={() => {
-                                        console.log(
-                                          subSubCategory?.dua?.id,
-                                          duaRef,
-                                        );
-
-                                        window.scrollTo({
-                                          top: duaRef.current[
-                                            subSubCategory?.dua?.id
-                                          ]?.offsetTop,
+                                        duaRef.current[
+                                          subSubCategory?.dua?.id
+                                        ]?.scrollIntoView({
                                           behavior: "smooth",
+                                          block: "start", // Align to the top of the container
                                         });
                                       }}
                                       className="flex items-start gap-3 py-1"
@@ -1052,7 +1047,7 @@ function CategoryPage() {
 
           {/* Dua Content */}
           <div
-            className="md:px-2 lg:px-0"
+            className="flex-1 overflow-y-scroll md:px-2 lg:px-0"
             style={{ backgroundColor: "#F9FFFB" }}
           >
             <div className="pb-20 lg:pb-0 bg-[#F7FFFB]">
