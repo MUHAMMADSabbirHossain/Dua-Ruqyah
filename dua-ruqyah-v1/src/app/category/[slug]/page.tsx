@@ -926,8 +926,22 @@ function CategoryPage() {
             {/* Category Catelog Section - Desktop Only*/}
             <div className="w-[345px] h-full bg-[#F7FFFB] border-[#E1EBE1]">
               {/* Search Bar */}
-              <div className="border-b p-4 border-[#E1EBE1] text-black">
-                Search Bar
+              <div className="border-b p-4 border-[#E1EBE1]">
+                <div className="mb-4">
+                  <div className="px-4 py-3 bg-[#E1EBE1]/50 rounded-full border border-[#E1EBE1] flex items-center">
+                    <Image
+                      src={"/icons/search-normal.svg"}
+                      alt="Search"
+                      width={18}
+                      height={18}
+                    />
+                    <input
+                      type="text"
+                      placeholder="Search By Category"
+                      className="text-[#282E20] ml-3 text-[14px] w-full placeholder-[#7C827D] bg-transparent outline-none"
+                    />
+                  </div>
+                </div>
               </div>
 
               {/* Category - Category */}
