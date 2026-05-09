@@ -684,7 +684,9 @@ function CategoryPage() {
   // Handle side bar collapse categories and sub categoriess
   useEffect(() => {
     if (categorySlug && categorySlug.length > 0) {
-      const currentCategory = catelogCategories.find((c) => {
+      const currentCategory: any = catelogCategories.find((c: any) => {
+        console.log(c);
+
         return c?.slug === categorySlug;
       });
 
@@ -694,7 +696,7 @@ function CategoryPage() {
 
         // Level 2 - Expand first sub category if it has sub_subcategories
         const currentSubCategory = currentCategory?.subcategories?.find(
-          (subCategory) => {
+          (subCategory: any) => {
             return (
               subCategory?.sub_subcategories &&
               subCategory?.sub_subcategories?.length > 0
@@ -962,7 +964,7 @@ function CategoryPage() {
                 )}
 
                 {/* Categories Catalog - If load successfully */}
-                {catelogCategories.map((catelogCategory) => (
+                {catelogCategories.map((catelogCategory: any) => (
                   <div key={catelogCategory?.id} className="">
                     {/* Level 1 */}
                     <div className=" py-3 px-4 hover:bg-gray-50/30 rounded-lg">
@@ -999,58 +1001,60 @@ function CategoryPage() {
                         {/* Dashed border */}
                         <div className="absolute mt-[12px] left-0 top-0 bottom-0 w-px border-l-2 border-dashed border-[#C5D1C7]"></div>
 
-                        {catelogCategory?.subcategories.map((subCategory) => (
-                          <div key={subCategory?.id}>
-                            <div
-                              onClick={() => {
-                                setSelectedExpandingSubCategory(
-                                  subCategory?.id,
-                                );
-                                setSubCategorySlug(subCategory?.slug);
-                              }}
-                              className="relative pl-6 py-2 cursor-pointer"
-                            >
-                              {/* Connection dash */}
-                              <div className="absolute top-1/2 left-0 w-4 h-px border-t-2 border-dashed border-[#E1EBE1]"></div>
+                        {catelogCategory?.subcategories.map(
+                          (subCategory: any) => (
+                            <div key={subCategory?.id}>
+                              <div
+                                onClick={() => {
+                                  setSelectedExpandingSubCategory(
+                                    subCategory?.id,
+                                  );
+                                  setSubCategorySlug(subCategory?.slug);
+                                }}
+                                className="relative pl-6 py-2 cursor-pointer"
+                              >
+                                {/* Connection dash */}
+                                <div className="absolute top-1/2 left-0 w-4 h-px border-t-2 border-dashed border-[#E1EBE1]"></div>
 
-                              <div className="text-[14px] font-medium text-[#282E29] leading-relaxed">
-                                {subCategory?.name}
+                                <div className="text-[14px] font-medium text-[#282E29] leading-relaxed">
+                                  {subCategory?.name}
+                                </div>
                               </div>
-                            </div>
 
-                            {/* Level 3 - Sub sub categories */}
-                            {selectedExpandingSubCategory ===
-                              subCategory?.id && (
-                              <div className="ml-4 pl-6 relative">
-                                {subCategory?.sub_subcategories.map(
-                                  (subSubCategory) => (
-                                    <div
-                                      key={subSubCategory?.id}
-                                      onClick={() => {
-                                        duaRef.current[
-                                          subSubCategory?.dua?.id
-                                        ]?.scrollIntoView({
-                                          behavior: "smooth",
-                                          block: "start", // Align to the top of the container
-                                        });
-                                      }}
-                                      className="flex items-start gap-3 py-1"
-                                    >
-                                      {/* To right arrow Icon */}
-                                      <div className="mt-1">
-                                        {svgIcons?.catelogToRightIcon}
+                              {/* Level 3 - Sub sub categories */}
+                              {selectedExpandingSubCategory ===
+                                subCategory?.id && (
+                                <div className="ml-4 pl-6 relative">
+                                  {subCategory?.sub_subcategories.map(
+                                    (subSubCategory: any) => (
+                                      <div
+                                        key={subSubCategory?.id}
+                                        onClick={() => {
+                                          duaRef.current[
+                                            subSubCategory?.dua?.id
+                                          ]?.scrollIntoView({
+                                            behavior: "smooth",
+                                            block: "start", // Align to the top of the container
+                                          });
+                                        }}
+                                        className="flex items-start gap-3 py-1"
+                                      >
+                                        {/* To right arrow Icon */}
+                                        <div className="mt-1">
+                                          {svgIcons?.catelogToRightIcon}
+                                        </div>
+
+                                        <p className="text-sm pt-0.5 text-[#252F29]">
+                                          {subSubCategory?.name}
+                                        </p>
                                       </div>
-
-                                      <p className="text-sm pt-0.5 text-[#252F29]">
-                                        {subSubCategory?.name}
-                                      </p>
-                                    </div>
-                                  ),
-                                )}
-                              </div>
-                            )}
-                          </div>
-                        ))}
+                                    ),
+                                  )}
+                                </div>
+                              )}
+                            </div>
+                          ),
+                        )}
                       </div>
                     )}
                   </div>
@@ -1073,7 +1077,7 @@ function CategoryPage() {
 
                 <div className="px-2 sm:px-4 lg:px-[68px]">
                   {duaContent.length > 0 ? (
-                    duaContent.map((dua) => (
+                    duaContent.map((dua: any) => (
                       <div
                         key={`${dua?.id}-${dua?.subcategory_slug}`}
                         ref={(e) => {
