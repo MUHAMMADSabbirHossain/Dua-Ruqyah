@@ -6,7 +6,7 @@ function Header({
   handleToggleMobileMenu,
   isMobileMenuOpen,
 }: {
-  poppinsFont: unknown;
+  poppinsFont: any;
   handleToggleMobileMenu: (open: boolean) => void;
   isMobileMenuOpen: boolean;
 }) {
