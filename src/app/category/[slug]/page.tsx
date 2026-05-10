@@ -616,6 +616,7 @@ function CategoryPage() {
     useState<number>(160);
   const [subCategorySlug, setSubCategorySlug] = useState<string>("");
   const [duaContent, setDuaContent] = useState<any>([]);
+  const [searchQuery, setSearchQuery] = useState<string>("");
 
   const duaRef = useRef<{ [key: string]: HTMLDivElement | null }>({});
 
@@ -730,6 +731,10 @@ function CategoryPage() {
     subCategorySlug,
   ]);
 
+  const filteredCategories = catelogCategories.filter((category: any) =>
+    category.name.toLowerCase().includes(searchQuery.toLowerCase()),
+  );
+
   return (
     <div className="bg-[#FBFFFB] min-h-screen">
       {/* Navigation Bar - Destop left bar - Mobile bottom bar  */}
@@ -748,13 +753,15 @@ function CategoryPage() {
             <CategoryNavigateBar
               loading={loading}
               error={error}
-              catelogCategories={catelogCategories}
               router={router}
               selectedExpandingCategory={selectedExpandingCategory}
               selectedExpandingSubCategory={selectedExpandingSubCategory}
               setSelectedExpandingSubCategory={setSelectedExpandingSubCategory}
               setSubCategorySlug={setSubCategorySlug}
               duaRef={duaRef}
+              searchQuery={searchQuery}
+              setSearchQuery={setSearchQuery}
+              filteredCategories={filteredCategories}
             />
           </div>
 

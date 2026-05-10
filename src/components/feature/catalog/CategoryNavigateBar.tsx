@@ -5,23 +5,27 @@ import Image from "next/image";
 function CategoryNavigateBar({
   loading,
   error,
-  catelogCategories,
   router,
   selectedExpandingCategory,
   setSelectedExpandingSubCategory,
   selectedExpandingSubCategory,
   setSubCategorySlug,
   duaRef,
+  searchQuery,
+  setSearchQuery,
+  filteredCategories,
 }: {
   loading: boolean;
   error: { status: boolean; message: string };
-  catelogCategories: any;
   router: any;
   selectedExpandingCategory: number;
   setSelectedExpandingSubCategory: (id: number) => void;
   selectedExpandingSubCategory: number;
   setSubCategorySlug: (slug: string) => void;
   duaRef: any;
+  searchQuery: string;
+  setSearchQuery: (query: string) => void;
+  filteredCategories: any;
 }) {
   return (
     <>
@@ -41,6 +45,12 @@ function CategoryNavigateBar({
                 type="text"
                 placeholder="Search By Category"
                 className="text-[#282E20] ml-3 text-[14px] w-full placeholder-[#7C827D] bg-transparent outline-none"
+                value={searchQuery}
+                onChange={(e) => {
+                  setSearchQuery(e.target.value);
+
+                  console.log("Search Query", searchQuery);
+                }}
               />
             </div>
           </div>
@@ -64,7 +74,7 @@ function CategoryNavigateBar({
           )}
 
           {/* Categories Catalog - If load successfully */}
-          {catelogCategories.map((catelogCategory: any) => (
+          {filteredCategories.map((catelogCategory: any) => (
             <div key={catelogCategory?.id} className="">
               {/* Level 1 */}
               <div className=" py-3 px-4 hover:bg-gray-50/30 rounded-lg">
