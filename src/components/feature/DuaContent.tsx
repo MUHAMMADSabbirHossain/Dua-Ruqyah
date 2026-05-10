@@ -3,15 +3,27 @@ import svgIcons from "../ui/icon/svgIcons";
 function DuaContent({
   duaContent,
   duaRef,
+  categorySlug,
 }: {
   duaContent: any[];
   duaRef: any;
+  categorySlug: string;
 }) {
   return (
     <>
       <div className="pb-20 lg:pb-0 bg-[#F7FFFB]">
         {/* Content */}
         <div className="bg-[#F9FFFB]">
+          {/* Catrgory Title */}
+          <div className="text-[rgba(64,114,95,1)] bg-[#EEF6EB] px-2 py-3 flex items-center gap-2 sm:px-4 sm:py-4 sm:gap-2.5 lg:pl-[68px] lg:pr-0 lg:py-6">
+            <span className="text-xs sm:text-sm lg:text-base font-semibold">
+              Category:{" "}
+            </span>
+            <span className="text-xs sm:text-sm lg:text-base">
+              {categorySlug}
+            </span>
+          </div>
+
           {/* Loading */}
 
           {/* Error Message */}

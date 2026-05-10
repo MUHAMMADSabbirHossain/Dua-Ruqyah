@@ -778,7 +778,11 @@ function CategoryPage() {
 
           {/* Dua Content */}
           <div className="flex-1 overflow-y-scroll md:px-2 lg:px-0 bg-[#F9FFFB]">
-            <DuaContent duaContent={duaContent} duaRef={duaRef} />
+            <DuaContent
+              duaContent={duaContent}
+              duaRef={duaRef}
+              categorySlug={categorySlug}
+            />
           </div>
 
           {/* Right Sidebar - Only Desktop View (2xl or 1536px and above)*/}
