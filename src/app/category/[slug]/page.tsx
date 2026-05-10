@@ -745,6 +745,17 @@ function CategoryPage() {
           poppinsFont={poppinsFont}
           isMobileMenuOpen={isMobileMenuOpen}
           handleToggleMobileMenu={handleToggleMobileMenu}
+          loading={loading}
+          error={error}
+          router={router}
+          selectedExpandingCategory={selectedExpandingCategory}
+          selectedExpandingSubCategory={selectedExpandingSubCategory}
+          setSelectedExpandingSubCategory={setSelectedExpandingSubCategory}
+          setSubCategorySlug={setSubCategorySlug}
+          duaRef={duaRef}
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+          filteredCategories={filteredCategories}
         />
 
         <div className="flex h-[calc(100vh-64px-64px)] lg:h-[calc(100vh-64px)]">

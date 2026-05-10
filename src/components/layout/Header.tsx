@@ -1,14 +1,37 @@
 import Image from "next/image";
 import svgIcons from "../ui/icon/svgIcons";
+import CategoryNavigateBar from "../feature/catalog/CategoryNavigateBar";
 
 function Header({
   poppinsFont,
   handleToggleMobileMenu,
   isMobileMenuOpen,
+  loading,
+  error,
+  router,
+  selectedExpandingCategory,
+  setSelectedExpandingSubCategory,
+  selectedExpandingSubCategory,
+  setSubCategorySlug,
+  duaRef,
+  searchQuery,
+  setSearchQuery,
+  filteredCategories,
 }: {
   poppinsFont: any;
   handleToggleMobileMenu: (open: boolean) => void;
   isMobileMenuOpen: boolean;
+  loading: boolean;
+  error: { status: boolean; message: string };
+  router: any;
+  selectedExpandingCategory: number;
+  setSelectedExpandingSubCategory: (id: number) => void;
+  selectedExpandingSubCategory: number;
+  setSubCategorySlug: (slug: string) => void;
+  duaRef: any;
+  searchQuery: string;
+  setSearchQuery: (query: string) => void;
+  filteredCategories: any;
 }) {
   return (
     <>
@@ -118,6 +141,7 @@ function Header({
               <p className="text-sm text-gray-600">Hisnul Muslim</p>
             </div>
           </div>
+
           {/* Close Button */}
           <button
             className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-200 transition-colors duration-300"
@@ -126,6 +150,21 @@ function Header({
             {svgIcons?.closeIcon}
           </button>
         </div>
+
+        {/* Category Catalog */}
+        <CategoryNavigateBar
+          loading={loading}
+          error={error}
+          router={router}
+          selectedExpandingCategory={selectedExpandingCategory}
+          selectedExpandingSubCategory={selectedExpandingSubCategory}
+          setSelectedExpandingSubCategory={setSelectedExpandingSubCategory}
+          setSubCategorySlug={setSubCategorySlug}
+          duaRef={duaRef}
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+          filteredCategories={filteredCategories}
+        />
       </div>
 
       {/* Backdrop - Mobile View */}
