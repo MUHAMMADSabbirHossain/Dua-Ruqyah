@@ -14,43 +14,60 @@ function DuaContent({
     <>
       <div className="pb-20 lg:pb-0 bg-[#F7FFFB]">
         {/* Content */}
-        <div className="bg-[#F9FFFB]">
-          <div>
+        <div className="bg-[#F9FFFB] relative">
+          {/* Header Sticky Section */}
+          <div className="sticky top-0 z-20">
             {/* Dua Breadcrumb */}
-            <div className="px-2 bg-[#E1EBE1] sm:px-4 ">
-              <div className="flex">
-                <div>
+            <div className="py-3 px-2 bg-[#E1EBE1] sm:px-4 lg:pl-[68px] lg:pr-0 lg:py-4">
+              <div className="flex items-center gap-1 sm:gap-2">
+                <div className="flex items-center gap-1 sm:gap-2">
                   <Image
                     src="/icons/home-bulk.svg"
                     alt="Home Bulk Icon"
                     width={16}
                     height={16}
+                    className="sm:w-[18px] sm:h-[18px]"
                   />
-                  <span>Home</span>
+                  <span className="text-[#417360] text-xs font-medium">
+                    Home
+                  </span>
                 </div>
                 <Image
                   src="/icons/arrow-right-linear.svg"
-                  alt="Arrow"
+                  alt="Arrow Right Linear Icon"
                   width={12}
                   height={12}
+                  className="sm:w-[14px] sm:h-[14px]"
                 />
-                <span>...</span>
+                <span className="text-[#417360] text-xs font-medium">...</span>
                 <Image
-                  src="/icons/arrow-right-linear-2.svg"
-                  alt="Arrow"
+                  src="/icons/arrow-right-linear.svg"
+                  alt="Arrow Right Linear Icon"
                   width={12}
                   height={12}
+                  className="sm:w-[14px] sm:h-[14px]"
                 />
-                <span>Dua&apos;s Importance</span>
-                <span>Dua&apos;s</span>
-
+                <span className="text-[#417360] text-xs font-medium">duas</span>
                 <Image
-                  src="/icons/arrow-right-linear-3.svg"
-                  alt="Arrow"
+                  src="/icons/arrow-right-linear.svg"
+                  alt="Arrow Right Linear Icon"
                   width={12}
                   height={12}
+                  className="sm:w-[14px] sm:h-[14px]"
                 />
-                <span>{categorySlug}</span>
+                <span className="text-[#417360] text-xs font-medium">
+                  category
+                </span>
+                <Image
+                  src="/icons/arrow-right-linear.svg"
+                  alt="Arrow Right Linear Icon"
+                  width={12}
+                  height={12}
+                  className="sm:w-[14px] sm:h-[14px]"
+                />
+                <span className="text-[#7C827D] text-xs font-normal truncate max-w-[120px] sm:max-w-none">
+                  {categorySlug}
+                </span>
               </div>
             </div>
 
