@@ -594,7 +594,7 @@ const svgIcons = {
 };
 
 function CategoryPage() {
-  const categorySlug = useParams().slug;
+  const categorySlug = useParams().slug as string;
 
   const router = useRouter();
 
@@ -760,7 +760,7 @@ function CategoryPage() {
 
         <div className="flex h-[calc(100vh-64px-64px)] lg:h-[calc(100vh-64px)]">
           {/* Category Catalog Navigate Bar - Desktop Only */}
-          <div className="hidden lg:block overflow-y-auto">
+          <div className="hidden lg:block overflow-y-auto [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-thumb]:bg-[#417360] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb:hover]:bg-[#2c5c4a]">
             <CategoryNavigateBar
               loading={loading}
               error={error}
@@ -777,7 +777,7 @@ function CategoryPage() {
           </div>
 
           {/* Dua Content */}
-          <div className="flex-1 overflow-y-scroll md:px-2 lg:px-0 bg-[#F9FFFB]">
+          <div className="flex-1 overflow-y-scroll md:px-2 lg:px-0 bg-[#F9FFFB] [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-thumb]:bg-[#417360] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb:hover]:bg-[#2c5c4a]">
             <DuaContent
               duaContent={duaContent}
               duaRef={duaRef}
