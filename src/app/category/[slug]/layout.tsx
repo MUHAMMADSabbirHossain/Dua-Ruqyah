@@ -2,7 +2,7 @@ import { Metadata } from "next";
 
 async function getCategory(slug: string) {
   const result = await fetch(
-    `http://localhost:3000/api/v1/categories?slug=${slug}`,
+    `https://duaruqyahird.netlify.app/api/v1/categories?slug=${slug}`,
   );
   const data = await result.json();
 
