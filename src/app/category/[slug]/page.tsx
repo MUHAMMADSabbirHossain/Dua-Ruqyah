@@ -598,8 +598,17 @@ function CategoryPage() {
 
   const router = useRouter();
 
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<{
+  const [categoryCatalogLoading, setCategoryCatalogLoading] =
+    useState<boolean>(false);
+  const [categoryCatalogError, setCategoryCatalogError] = useState<{
+    message: string;
+    status: boolean;
+  }>({
+    message: "",
+    status: false,
+  });
+  const [duaLoading, setDuaLoading] = useState<boolean>(false);
+  const [duaError, setDuaError] = useState<{
     message: string;
     status: boolean;
   }>({
@@ -625,8 +634,8 @@ function CategoryPage() {
   };
 
   useEffect(() => {
-    setLoading(true);
-    setError({
+    setCategoryCatalogLoading(true);
+    setCategoryCatalogError({
       message: "",
       status: false,
     });
@@ -659,12 +668,12 @@ function CategoryPage() {
       } catch (err) {
         const error = err as Error;
 
-        setError({
+        setCategoryCatalogError({
           message: error.message || "Failed to load categories",
           status: true,
         });
       } finally {
-        setLoading(false);
+        setCategoryCatalogLoading(false);
       }
     }
     fetchData();
@@ -702,6 +711,7 @@ function CategoryPage() {
 
     (async () => {
       try {
+        setDuaLoading(true);
         const apiUrl = `/api/v1/duas?${
           subCategorySlug
             ? "sub_category_slug=" + subCategorySlug
@@ -719,8 +729,17 @@ function CategoryPage() {
         ) {
           setDuaContent(data?.data);
         }
-      } catch (error) {
-        console.log(error);
+      } catch (err) {
+        console.log(err);
+
+        const error = err as Error;
+
+        setDuaError({
+          message: error.message || "Failed to load duas",
+          status: true,
+        });
+      } finally {
+        setDuaLoading(false);
       }
     })();
   }, [
@@ -745,8 +764,8 @@ function CategoryPage() {
           poppinsFont={poppinsFont}
           isMobileMenuOpen={isMobileMenuOpen}
           handleToggleMobileMenu={handleToggleMobileMenu}
-          loading={loading}
-          error={error}
+          categoryCatalogLoading={categoryCatalogLoading}
+          categoryCatalogError={categoryCatalogError}
           router={router}
           selectedExpandingCategory={selectedExpandingCategory}
           selectedExpandingSubCategory={selectedExpandingSubCategory}
@@ -762,8 +781,8 @@ function CategoryPage() {
           {/* Category Catalog Navigate Bar - Desktop Only */}
           <div className="hidden lg:block overflow-y-auto [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-thumb]:bg-[#417360] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb:hover]:bg-[#2c5c4a]">
             <CategoryNavigateBar
-              loading={loading}
-              error={error}
+              categoryCatalogLoading={categoryCatalogLoading}
+              categoryCatalogError={categoryCatalogError}
               router={router}
               selectedExpandingCategory={selectedExpandingCategory}
               selectedExpandingSubCategory={selectedExpandingSubCategory}
@@ -782,6 +801,8 @@ function CategoryPage() {
               duaContent={duaContent}
               duaRef={duaRef}
               categorySlug={categorySlug}
+              duaLoading={duaLoading}
+              duaError={duaError}
             />
           </div>
 

@@ -6,8 +6,8 @@ function Header({
   poppinsFont,
   handleToggleMobileMenu,
   isMobileMenuOpen,
-  loading,
-  error,
+  categoryCatalogLoading,
+  categoryCatalogError,
   router,
   selectedExpandingCategory,
   setSelectedExpandingSubCategory,
@@ -21,8 +21,8 @@ function Header({
   poppinsFont: any;
   handleToggleMobileMenu: (open: boolean) => void;
   isMobileMenuOpen: boolean;
-  loading: boolean;
-  error: { status: boolean; message: string };
+  categoryCatalogLoading: boolean;
+  categoryCatalogError: { status: boolean; message: string };
   router: any;
   selectedExpandingCategory: number;
   setSelectedExpandingSubCategory: (id: number) => void;
@@ -154,8 +154,8 @@ function Header({
         <div className="overflow-y-scroll h-[calc(100vh-64px)] [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-thumb]:bg-[#417360] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb:hover]:bg-[#2c5c4a]">
           {/* Category Catalog */}
           <CategoryNavigateBar
-            loading={loading}
-            error={error}
+            categoryCatalogLoading={categoryCatalogLoading}
+            categoryCatalogError={categoryCatalogError}
             router={router}
             selectedExpandingCategory={selectedExpandingCategory}
             selectedExpandingSubCategory={selectedExpandingSubCategory}
