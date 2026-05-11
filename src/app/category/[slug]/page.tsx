@@ -674,7 +674,7 @@ function CategoryPage() {
   useEffect(() => {
     if (categorySlug && categorySlug.length > 0) {
       const currentCategory: any = catelogCategories.find((c: any) => {
-        console.log(c);
+        // console.log(c);
 
         return c?.slug === categorySlug;
       });

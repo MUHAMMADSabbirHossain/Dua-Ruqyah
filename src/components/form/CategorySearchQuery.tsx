@@ -26,7 +26,7 @@ function CategorySearchQuery({
               onChange={(e) => {
                 setSearchQuery(e.target.value);
 
-                console.log("Search Query", searchQuery);
+                // console.log("Search Query", searchQuery);
               }}
             />
           </div>
