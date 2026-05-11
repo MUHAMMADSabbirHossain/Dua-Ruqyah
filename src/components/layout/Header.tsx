@@ -151,20 +151,22 @@ function Header({
           </button>
         </div>
 
-        {/* Category Catalog */}
-        <CategoryNavigateBar
-          loading={loading}
-          error={error}
-          router={router}
-          selectedExpandingCategory={selectedExpandingCategory}
-          selectedExpandingSubCategory={selectedExpandingSubCategory}
-          setSelectedExpandingSubCategory={setSelectedExpandingSubCategory}
-          setSubCategorySlug={setSubCategorySlug}
-          duaRef={duaRef}
-          searchQuery={searchQuery}
-          setSearchQuery={setSearchQuery}
-          filteredCategories={filteredCategories}
-        />
+        <div className="overflow-y-scroll h-[calc(100vh-64px)] [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-thumb]:bg-[#417360] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb:hover]:bg-[#2c5c4a]">
+          {/* Category Catalog */}
+          <CategoryNavigateBar
+            loading={loading}
+            error={error}
+            router={router}
+            selectedExpandingCategory={selectedExpandingCategory}
+            selectedExpandingSubCategory={selectedExpandingSubCategory}
+            setSelectedExpandingSubCategory={setSelectedExpandingSubCategory}
+            setSubCategorySlug={setSubCategorySlug}
+            duaRef={duaRef}
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
+            filteredCategories={filteredCategories}
+          />
+        </div>
       </div>
 
       {/* Backdrop - Mobile View */}
