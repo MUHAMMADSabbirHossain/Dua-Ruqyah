@@ -1,5 +1,6 @@
 import Image from "next/image";
 import svgIcons from "../ui/icon/svgIcons";
+import { Dua } from "@/types/dua";
 
 function DuaContent({
   duaContent,
@@ -8,7 +9,7 @@ function DuaContent({
   duaLoading,
   duaError,
 }: {
-  duaContent: any[];
+  duaContent: Dua[];
   duaRef: any;
   categorySlug: string;
   duaLoading: boolean;

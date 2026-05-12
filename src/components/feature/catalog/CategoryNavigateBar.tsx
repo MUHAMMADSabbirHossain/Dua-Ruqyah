@@ -1,5 +1,6 @@
 import CategorySearchQuery from "@/components/form/CategorySearchQuery";
 import svgIcons from "@/components/ui/icon/svgIcons";
+import { CatalogCategory } from "@/types/catalog";
 import { renderIcon } from "@/utility/imageHelper";
 import Image from "next/image";
 
@@ -26,7 +27,7 @@ function CategoryNavigateBar({
   duaRef: any;
   searchQuery: string;
   setSearchQuery: (query: string) => void;
-  filteredCategories: any;
+  filteredCategories: CatalogCategory[];
 }) {
   return (
     <>

@@ -5,6 +5,12 @@ import DuaContent from "@/components/feature/DuaContent";
 import Header from "@/components/layout/Header";
 import NavigateVar from "@/components/layout/NavigateVar";
 import RightSidebar from "@/components/layout/RightSidebar";
+import {
+  CatalogCategoriesApiResponse,
+  CatalogCategory,
+  CatalogSubCategory,
+} from "@/types/catalog";
+import { DuasApiResponse } from "@/types/dua";
 import { Poppins } from "next/font/google";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
@@ -40,13 +46,16 @@ function CategoryPage() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const [arabicFontSize, setArabicFontSize] = useState<number>(24);
   const [translationFontSize, setTranslationFontSize] = useState<number>(18);
-  const [catelogCategories, setCatelogCategories] = useState([]);
+  const [catelogCategories, setCatelogCategories] = useState<
+    CatalogCategoriesApiResponse["data"]
+  >([]);
   const [selectedExpandingCategory, setSelectedExpandingCategory] =
     useState<number>(121);
   const [selectedExpandingSubCategory, setSelectedExpandingSubCategory] =
     useState<number>(160);
   const [subCategorySlug, setSubCategorySlug] = useState<string>("");
-  const [duaContent, setDuaContent] = useState<any>([]);
+
+  const [duaContent, setDuaContent] = useState<DuasApiResponse["data"]>([]);
   const [searchQuery, setSearchQuery] = useState<string>("");
 
   const duaRef = useRef<{ [key: string]: HTMLDivElement | null }>({});
@@ -77,7 +86,7 @@ function CategoryPage() {
 
           // Find the category by slug and set the subcategory slug to the first subcategory
           const currentCategory = data?.data.find(
-            (item: any) => item?.slug === categorySlug,
+            (item: CatalogCategory) => item?.slug === categorySlug,
           );
           if (currentCategory && currentCategory?.subcategories?.length > 0) {
             setSubCategorySlug(currentCategory.subcategories[0].slug);
@@ -104,27 +113,32 @@ function CategoryPage() {
   // Handle side bar collapse categories and sub categoriess
   useEffect(() => {
     if (categorySlug && categorySlug.length > 0) {
-      const currentCategory: any = catelogCategories.find((c: any) => {
-        // console.log(c);
+      const currentCategory: CatalogCategory | undefined =
+        catelogCategories.find((c: CatalogCategory) => {
+          // console.log(c);
 
-        return c?.slug === categorySlug;
-      });
+          return c?.slug === categorySlug;
+        });
 
       // Level 1 - Expand current category
       if (currentCategory && currentCategory?.subcategories?.length > 0) {
         setSelectedExpandingCategory(currentCategory.id);
 
         // Level 2 - Expand first sub category if it has sub_subcategories
-        const currentSubCategory = currentCategory?.subcategories?.find(
-          (subCategory: any) => {
-            return (
-              subCategory?.sub_subcategories &&
-              subCategory?.sub_subcategories?.length > 0
-            );
-          },
-        );
+        const currentSubCategory: CatalogSubCategory | undefined =
+          currentCategory?.subcategories?.find(
+            (subCategory: CatalogSubCategory) => {
+              return (
+                subCategory?.sub_subcategories &&
+                subCategory?.sub_subcategories?.length > 0
+              );
+            },
+          );
 
-        if (currentSubCategory && currentSubCategory?.duas?.length > 0) {
+        if (
+          currentSubCategory &&
+          currentSubCategory?.sub_subcategories?.length > 0
+        ) {
           setSelectedExpandingSubCategory(currentSubCategory.id);
           setSubCategorySlug(currentSubCategory?.slug);
         }
@@ -172,9 +186,10 @@ function CategoryPage() {
     subCategorySlug,
   ]);
 
-  const filteredCategories = catelogCategories.filter((category: any) =>
-    category.name.toLowerCase().includes(searchQuery.toLowerCase()),
-  );
+  const filteredCategories: CatalogCategoriesApiResponse["data"] =
+    catelogCategories.filter((category: CatalogCategory) =>
+      category.name.toLowerCase().includes(searchQuery.toLowerCase()),
+    );
 
   return (
     <div className="bg-[#FBFFFB] min-h-screen">

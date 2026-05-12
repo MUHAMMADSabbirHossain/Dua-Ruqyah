@@ -1,3 +1,4 @@
+import { CategoryApiResponse } from "@/types/category";
 import { Metadata } from "next";
 
 async function getCategory(slug: string) {
@@ -17,7 +18,7 @@ export async function generateMetadata({
   const { slug } = await params;
   //   console.log(slug);
 
-  const data = await getCategory(slug);
+  const data: CategoryApiResponse = await getCategory(slug);
 
   return {
     title: `${data?.data?.name || ""} - Dua & Ruqyah | (duaruqyahird.netlify.app)`,

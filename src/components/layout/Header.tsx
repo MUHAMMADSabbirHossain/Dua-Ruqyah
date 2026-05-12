@@ -1,6 +1,7 @@
 import Image from "next/image";
 import svgIcons from "../ui/icon/svgIcons";
 import CategoryNavigateBar from "../feature/catalog/CategoryNavigateBar";
+import { CatalogCategory } from "@/types/catalog";
 
 function Header({
   poppinsFont,
@@ -31,7 +32,7 @@ function Header({
   duaRef: any;
   searchQuery: string;
   setSearchQuery: (query: string) => void;
-  filteredCategories: any;
+  filteredCategories: CatalogCategory[];
 }) {
   return (
     <>
