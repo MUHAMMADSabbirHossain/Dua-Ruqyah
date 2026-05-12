@@ -178,13 +178,7 @@ function CategoryPage() {
         setDuaLoading(false);
       }
     })();
-  }, [
-    categorySlug,
-    catelogCategories,
-    selectedExpandingCategory,
-    selectedExpandingSubCategory,
-    subCategorySlug,
-  ]);
+  }, []);
 
   const filteredCategories: CatalogCategoriesApiResponse["data"] =
     catelogCategories.filter((category: CatalogCategory) =>
