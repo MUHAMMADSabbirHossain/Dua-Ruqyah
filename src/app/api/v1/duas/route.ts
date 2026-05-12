@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import db from "@/lib/database";
+import { Dua } from "@/types/dua";
 
 export async function GET(req: Request) {
   try {
@@ -50,7 +51,7 @@ export async function GET(req: Request) {
     }
 
     // execute the query
-    const result = db.prepare(sqlQuery).all(...params);
+    const result = db.prepare(sqlQuery).all(...params) as Dua[];
 
     return NextResponse.json(
       {

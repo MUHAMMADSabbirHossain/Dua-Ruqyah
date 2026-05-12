@@ -17,5 +17,6 @@ export interface CategoryApiResponse {
   status: number;
   success: boolean;
   message: string;
+  count: number;
   data: Category;
 }

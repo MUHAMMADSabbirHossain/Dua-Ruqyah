@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import db from "@/lib/database";
+import { Category } from "@/types/category";
 
 export async function GET(req: Request) {
   try {
@@ -9,7 +10,7 @@ export async function GET(req: Request) {
 
     const sqlQuery = `SELECT * FROM categories WHERE slug = ?`;
 
-    const result = db.prepare(sqlQuery).get(slug);
+    const result = db.prepare(sqlQuery).get(slug) as Category;
 
     return NextResponse.json(
       {

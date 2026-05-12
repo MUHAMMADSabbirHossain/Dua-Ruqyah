@@ -1,26 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import db from "@/lib/database";
+import { CatalogSubSubCategory } from "@/types/catalog";
 
-interface SubSubCategory {
-  id: number;
-  name: string;
-  slug: string;
-  icon_path: string | null;
-  sort_order: number;
-  is_active: boolean;
-}
-
-interface SubCategory {
-  id: number;
-  name: string;
-  slug: string;
-  icon_path: string | null;
-  sort_order: number;
-  is_active: boolean;
-  sub_subcategories: SubSubCategory[];
-}
-
-interface Category {
+interface CatalogCategory {
   id: number;
   name: string;
   name_ar: string;
@@ -28,7 +10,7 @@ interface Category {
   icon_path: string | null;
   sort_order: number;
   is_active: boolean;
-  subcategories: SubCategory[];
+  subcategories: CatalogSubSubCategory;
 }
 
 interface RawCategoryRow {
@@ -103,7 +85,7 @@ export async function GET(req: NextRequest) {
       .all() as RawCategoryRow[];
 
     // Parse JSON string to array of objects
-    const parseResult: Category[] = result.map((row) => ({
+    const parseResult: CatalogCategory[] = result.map((row) => ({
       id: row.id,
       name: row.name,
       name_ar: row.name_ar,
