@@ -41,7 +41,7 @@ export default function Home() {
         <div>
           <Link
             className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-[#417360] px-5 transition-colors hover:bg-[#234037] dark:hover:bg-[#234037] text-white"
-            href="/category/duas-important"
+            href="/category/duas-importance"
           >
             <span className=" w-10 h-10 text-white flex items-center justify-center">
               {svgIcons?.duaIcon}
