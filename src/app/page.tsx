@@ -1,4 +1,6 @@
+import svgIcons from "@/components/ui/icon/svgIcons";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -34,6 +36,20 @@ export default function Home() {
             center.
           </p>
         </div>
+
+        {/* Interview Project Page */}
+        <div>
+          <Link
+            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-[#417360] px-5 transition-colors hover:bg-[#234037] dark:hover:bg-[#234037] text-white"
+            href="/category/duas-important"
+          >
+            <span className=" w-10 h-10 text-white flex items-center justify-center">
+              {svgIcons?.duaIcon}
+            </span>
+            Go To Interview Project Page
+          </Link>
+        </div>
+
         <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
           <a
             className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
