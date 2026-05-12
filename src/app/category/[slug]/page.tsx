@@ -108,7 +108,7 @@ function CategoryPage() {
       }
     }
     fetchData();
-  }, []);
+  }, [categorySlug]);
 
   // Handle side bar collapse categories and sub categoriess
   useEffect(() => {

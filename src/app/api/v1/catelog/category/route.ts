@@ -24,7 +24,7 @@ interface RawCategoryRow {
   subcategories: string | null; // JSON string from SQLite
 }
 
-export async function GET(req: NextRequest) {
+export async function GET() {
   try {
     const result = db
       .prepare(

@@ -34,7 +34,7 @@ export async function GET(req: Request) {
                         WHERE 1 = 1
                     `;
 
-    let params = [];
+    const params: string[] = [];
 
     // if subcategory slug is present, then fetch data based on subcategory slug else fetch data based on category slug
     if (sanitizedSubCategorySlug && sanitizedSubCategorySlug.length > 0) {
